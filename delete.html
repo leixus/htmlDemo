@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <div>
+        <div>
+            111
+            <div>
+                <button class="delete">删除</button>
+            </div>
+        </div>
+        <div>
+            2222
+            <div>
+                <button class="delete">删除</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(".delete").click(function () {
+        var parent = $(this).parent().parent();
+        parent.remove();
+    })
+</script>
+</html>

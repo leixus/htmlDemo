@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+<input type="button" id="button" />
+</body>
+<script>
+    window.onload = function () {
+        var aInput = document.getElementById("button");
+        aInput.onclick = function () {
+            var d1 = new Dialog();
+            d1.init({
+                title: '111',
+                w: 300,
+                h: 300,
+                dir: 'center'
+            })
+        }
+    };
+
+    function Dialog() {
+        this.oLogin = null;
+        this.settings = {
+            title: '',
+            w: 300,
+            h: 300,
+            dir: 'center'
+        }
+    }
+
+    Dialog.prototype.init = function (option) {
+        extend(this.settings, option);
+        this.create();
+    };
+
+    Dialog.prototype.create = function () {
+        this.oLogin = document.createElement("div");
+        this.oLogin.className = 'login';
+        this.oLogin.innerHTML = '';
+    };
+
+    function extend(obj1, obj2) {
+        for (var attr in obj2) {
+            obj1[attr] = obj2[attr]
+        }
+    }
+</script>
+</html>

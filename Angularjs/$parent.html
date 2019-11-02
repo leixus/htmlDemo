@@ -1,0 +1,59 @@
+<DOCTYPE html>
+    <html ng-app="app">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>ng-repeat</title>
+        <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+        <script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+    </head>
+
+    <body>
+        <h1>scope</h1>
+        <div ng-controller="ParentCtrl">
+            ParentCtrl：
+            <br />
+
+            父scope的countrywaibu:{{countrywaibu}}
+            <br />
+
+            父scope的countries:<br />{{countries|json}}
+
+            <ul>
+                <li ng-repeat="countrywaibu in countries">ng-repeat:<br />
+
+                    child 中调用父scope的$parent.countrywaibu :{{$parent.countrywaibu}}
+                    <br />
+                    child中与父scope同名的countrywaibu的countrywaibu.name: 
+
+                    <input type="text" ng-model="countrywaibu.name"></input>
+
+                    <span>{{countrywaibu.name}}</span>
+                    <br />
+
+                    <button ng-click="remove($index)">移除countries中的当前元素</button>
+                </li>
+            </ul>
+        </div>
+
+        <script type="text/javascript" chartset="utf-8">
+            // the controller
+            var app = angular.module('app', []);
+            app.controller('ParentCtrl', function ($scope) {
+                $scope.countrywaibu = "waibu";
+                $scope.population = 7000;
+                
+                $scope.countries = [
+                    { name: 'France', population: 63.1 },
+                    { name: 'United Kingdom', population: 61.8 }
+                ];
+                $scope.remove = function (index) {
+                    //删除index下标的某个元素
+                    $scope.countries.splice(index, 1);
+                }
+            });
+        </script>
+
+    </body>
+
+    </html>

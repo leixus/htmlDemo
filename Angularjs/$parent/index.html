@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-app="app" ng-controller="ctrl">
+    <div ng-if="true">
+        <div ng-if="true">
+            <div>
+                <app-radio value="'ok'" ng-model="$parent.$parent.branch"></app-radio>
+            </div>
+            <button ng-click="submitVal()">提交</button>
+        </div>
+    </div>
+
+</body>
+<script src="../angular.js"></script>
+<script src="index.js"></script>
+<script src="radio.js"></script>
+</html>

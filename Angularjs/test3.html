@@ -1,0 +1,30 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>AngularJS 依赖注入</title>
+</head>
+<body>
+<div ng-app="myApp">
+    <div ng-controller="firstController">
+        {{name}}
+    </div>
+    <div ng-controller="secondController">
+        {{name}}
+    </div>
+    <div ng-controller="thirdController">
+        {{name}}
+    </div>
+</div>
+<script src="//cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+<script type="text/javascript">
+    var app = angular.module("myApp", ['myApp2']);
+
+    app.controller('firstController', ['$scope', function ($scope) {
+        $scope.name = "张三";
+
+    }]);
+</script>
+<script src="Modules.js"></script>
+</body>
+</html>
