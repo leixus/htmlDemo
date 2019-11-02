@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="downLoad()">按钮</button>
+<script>
+    function downLoad(content,fileName){
+
+        var aEle = document.createElement("a"),
+
+        blob = new Blob([content]);
+
+        aEle.download = fileName;
+
+        aEle.href = window.URL.createObjectUrl(blob);
+
+        aEle.click();
+
+    }
+
+    downLoad('sssssssss','test.txt');
+</script>
+</body>
+</html>

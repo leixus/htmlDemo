@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+</head>
+<body>
+<div id="charts" style="width: 700px; height: 500px;">
+
+</div>
+
+<script src="echarts.js"></script>
+<script src="echarts-wordcloud.min.js"></script>
+<script src="macarons.js"></script>
+<script>
+
+    function createRandomItemStyle() {
+        return {
+            normal: {
+                color: 'rgb(' + [
+                    Math.round(Math.random() * 240),
+                    Math.round(Math.random() * 240),
+                    Math.round(Math.random() * 240)
+                ].join(',') + ')'
+            }
+        };
+    }
+
+    var myChart = echarts.init(document.getElementById('charts'));
+    var option = {
+        tooltip: {
+            show: true
+        },
+        series: [{
+            // name: '词频分析',
+            type: "wordCloud",
+            shape:'circle',
+            gridSize: 22,
+            sizeRange: [12, 55],
+            rotationRange: [0, 0],
+            textPadding: [20, 30],
+            textStyle: {
+                normal: {
+                    color: function(data) {
+                        console.log(data);
+                        return 'rgb(' + [
+                            Math.round(Math.random() * 255),
+                            Math.round(Math.random() * 255),
+                            Math.round(Math.random() * 255)
+                        ].join(',') + ')';
+                    }
+                },
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowColor: '#333'
+                }
+            },
+            data: [
+                {
+                    name: "建议",
+                    value: 87,
+                },
+                {
+                    name: "税收",
+                    value: 50
+                },
+                {
+                    name: "优化",
+                    value: 26
+                },
+                {
+                    name: "智能分析",
+                    value: 20
+                },
+                {
+                    name: "发票",
+                    value: 12
+                },
+                {
+                    name: "注销",
+                    value: 12
+                },
+                {
+                    name: "风险",
+                    value: 12
+                },
+                {
+                    name: "任务",
+                    value: 11
+                },
+                {
+                    name: "流程",
+                    value: 11
+                },
+                {
+                    name: "权限",
+                    value: 10
+                },
+                {
+                    name: "应对",
+                    value: 8
+                },
+                {
+                    name: "增值税",
+                    value: 7
+                },
+                {
+                    name: "岗位",
+                    value: 7
+                },
+                {
+                    name: "推送",
+                    value: 7
+                },
+                {
+                    name: "登记",
+                    value: 7
+                },
+                {
+                    name: "入库",
+                    value: 5
+                },
+                {
+                    name: "申报表",
+                    value: 5
+                },
+                {
+                    name: "开票",
+                    value: 4
+                },
+                {
+                    name: "数据管理",
+                    value: 4
+                }
+            ]
+        }]
+    };
+    myChart.setOption(option);
+</script>
+</body>
+</html>

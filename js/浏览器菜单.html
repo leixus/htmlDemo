@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        #menu {
+            list-style: none;
+            margin: 0px;
+            padding: 0px;
+            position: absolute;
+            display: none;
+            width: 100px;
+            height: 100px;
+            background-color: gray;
+        }
+
+        #menu li {
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
+</head>
+
+<body style="height: 1000px">
+    <input type="text" id="txt">
+    <ul id="menu">
+        <li>鱼香肉丝</li>
+        <li>醋溜土豆丝</li>
+        <li>麻辣小龙虾</li>
+        <li>回锅肉</li>
+    </ul>
+</body>
+
+</html>
+
+<script type="text/javascript">
+
+    //浏览器的默认行为：浏览器自带的功能，如：超链接，文本框可以输入内容，网页的右键菜单
+
+    //oncontextmenu:上下文菜单，就是右键菜单。
+
+    window.oncontextmenu = function (event) {
+        // alert("hi");
+        var evt = event || window.event;
+        // evt.preventDefault();
+        var clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
+        var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+
+        var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+
+        //给left和top分别赋值为鼠标的位置；
+        $("menu").style.left = evt.pageX + "px";
+        $("menu").style.top = evt.pageY + "px";
+
+        //如果鼠标右边放不下菜单，就把left的值的改了
+        if (evt.pageX + 100 > clientWidth + scrollLeft) {//菜单应该在鼠标左边；
+            var left1 = evt.pageX - 100;
+            $("menu").style.left = left1 + "px";
+        }
+
+        //如果鼠标下边放不下菜单，就把top的值的改了
+        if (evt.pageY + 100 > clientHeight + scrollTop) {
+            var top1 = (evt.pageY - 100);
+            $("menu").style.top = top1 + "px";
+        }
+
+        $("menu").style.display = "block";
+    }
+
+    window.onmousedown = function () {
+        $("menu").style.display = "none";
+
+    }
+
+    function $(id) {
+        return document.getElementById(id);
+    }
+
+</script>
+``
+[完整代码下载，请点击](https://download.csdn.net/download/h5wangbq/11267893)

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../plugins/bootstrap-3.3.7/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../plugins/bootstrap-table-master/dist/bootstrap-table.css">
+</head>
+<body>
+
+<table id="table"></table>
+
+
+<script src="../plugins/jquery-3.4.1.min.js"></script>
+<script src="../plugins/bootstrap-3.3.7/dist/js/bootstrap.js"></script>
+<script src="../plugins/bootstrap-table-master/dist/bootstrap-table.js"></script>
+<script src="../plugins/bootstrap-table-master/dist/locale/bootstrap-table-zh-CN.js"></script>
+<script>
+    $('#table').bootstrapTable({
+        method:'post',
+        url: 'https://api.apiopen.top/getWangYiNews',
+        //Post请求加上如下配置
+        contentType:"application/x-www-form-urlencoded; charset=UTF-8",
+        // striped:true,
+        pagination:true, //设置分页
+        queryParams : queryParams,//请求服务器时所传的参数,
+        sidePagination:'server',
+        pageSize: 10,//单页记录数,
+        pageList:[10,20,30,40,'All'],//分页进步值
+        // 请求成功后,渲染表格
+        responseHandler: responseHandler,
+        columns : [ {
+            title : '标题',
+            field : 'title',
+            sortable : true
+        }, {
+            title : '时间',
+            field : 'passtime',
+            sortable : true
+        }, {
+            title : '地址',
+            field : 'path',
+        }]
+    });
+    //前端向后端传递分页参数,包括每一页的数据和第几页
+    function queryParams(params){
+        console.log(params);
+        return {
+            count: params.limit, //每一页的数据行数，默认是上面的10
+            page: parseInt(params.offset/params.limit)+1,//当前页面，默认是上面的设置的1(pageNumber)
+        }
+    }
+
+    // 请求成功,渲染表格
+    function responseHandler(result) {
+        console.log(result);
+        var temp = {
+            // 下面这两个参数是必须有的, 名称不能变
+            // 总的数量
+            total : 100,
+            // 数据
+            rows : result.result
+        };
+        return temp;
+    }
+
+
+</script>
+</body>
+</html>

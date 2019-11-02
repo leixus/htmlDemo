@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #container {
+            border: 1px solid green;
+            /*overflow: hidden;*/
+        }
+        #container:after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+        .div1 {
+            float: left;
+            width: 100px;
+            height: 100px;
+        }
+        .div2 {
+            background: red;
+        }
+        .div3 {
+            background: green;
+        }
+    </style>
+
+</head>
+<body>
+<div id="container">
+    <div class="div1 div2"></div>
+    <div class="div1 div3"></div>
+<!--    <div style="clear:both"></div>-->
+</div>
+</body>
+</html>

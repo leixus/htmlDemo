@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../plugins/bootstrap-3.3.7/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../plugins/bootstrap-table-master/dist/bootstrap-table.css">
+</head>
+<body>
+<table id="table">
+
+</table>
+<script src="../plugins/jquery-3.4.1.min.js"></script>
+<script src="../plugins/bootstrap-3.3.7/dist/js/bootstrap.js"></script>
+<script src="../plugins/bootstrap-table-master/dist/bootstrap-table.js"></script>
+<script src="../plugins/bootstrap-table-master/dist/locale/bootstrap-table-zh-CN.js"></script>
+<script>
+    $('#table').bootstrapTable({
+        url: 'https://api.apiopen.top/getWangYiNews',
+        // 请求服务器携带参数
+        // queryParams: queryParams,
+        // 请求成功后,渲染表格
+        // responseHandler: responseHandler,
+        // pagination: true,
+        // data_locale: 'zh-CN',
+        // pageSize: 10,
+        // pageList : [ 5, 10, 20, 30, 'All'],
+
+        // 请求方法
+        method : "post",
+        // 请求的后台地址
+        url : "https://api.apiopen.top/getWangYiNews",
+        // 加载的json格式数据
+        contentType: "application/x-www-form-urlencoded",
+        fixedColumns: true,
+        fixedNumber: 1,
+        // 导出所有数据
+        exportDataType: 'all',
+        // 显示导出
+        showExport: true,
+        // 导出支持类型
+        exportTypes: ['csv', 'txt', 'excel'],
+        // 显示分页开关
+        showPaginationSwitch: false,
+        // 分页
+        pagination: true,
+        // 如果设置了分页，首页页码
+        pageNumber: 0,
+        // 每页的记录行数
+        pageSize: 50,
+        // 可供选择的每页的行数
+        pageList: [50, 100, 200, 300],
+        // 行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+        height: 700,
+        // 显示间隔颜色
+        striped: true,
+        // 设置为true, 禁止ajax数据缓存
+        cache: false,
+        // 显示搜索框
+        search: false,
+        // 服务端处理分页,客户端处理则为 client
+        sidePagination: 'server',
+        // 请求服务器携带参数
+        queryParams : function(params) {//上传服务器的参数
+            console.log(params);
+            var temp = {//如果是在服务器端实现分页，limit、offset这两个参数是必须的
+                limit : params.limit, // 每页显示数量
+                offset : params.offset, // SQL语句起始索引
+                page : (params.offset / params.limit) + 1, //当前页码
+                // Name : $('#search_name').val(),
+                // Tel : $('#search_tel').val()
+            };
+            return temp;
+        },
+        // 请求成功后,渲染表格
+        responseHandler: responseHandler,
+        columns: [{
+            field: 'passtime',
+            title: '时间'
+        }, {
+            field: 'path',
+            title: '链接'
+        }, {
+            field: 'title',
+            title: '标题'
+        }],
+        onPageChange: function (number, size) {
+
+
+        }
+    });
+
+    $(window).resize(function () {
+        $("#table").bootstrapTable('resetView');
+    });
+    // 修正bootstrapTable错误
+    $(".fixed-table-header-columns tr:first th:last").removeAttr("rowspan");
+
+    // 请求服务器携带参数
+    function queryParams(params) {
+        console.log(params);
+        // 表格, 追加参数
+        var args = $.param({
+            // 当前页数   0
+            pageNumber : params.offset/params.limit,
+            // 每页显示多少条
+            pageSize : params.limit
+        });
+        return args;
+    }
+
+    // 请求成功,渲染表格
+    function responseHandler(result) {
+        console.log(result);
+        var temp = {
+            // 下面这两个参数是必须有的, 名称不能变
+            // 总的数量
+            total : result.total,
+            // 数据
+            rows : result.data
+        };
+        return temp;
+    }
+</script>
+</body>
+</html>

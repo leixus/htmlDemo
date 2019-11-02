@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="echarts.js"></script>
+</head>
+<body>
+<div id="charts" style="width: 800px; height: 600px;"></div>
+<script>
+    var myChart = echarts.init(document.getElementById('charts'));
+    var option = {
+        tooltip: {
+            formatter: '{b}<br />{c}'
+        },
+        animationDuration: 100,
+        xAxis: {
+            show: true,
+            type: 'value'
+        },
+        yAxis: {
+            show: true,
+            type: 'value'
+        },
+        series: [
+            {
+                type: 'graph',
+                coordinateSystem: 'cartesian2d',
+                //建头
+                edgeSymbol: ['', 'arrow' ],
+                //圆形上面的文字
+                label: {
+                    normal: {
+                        position: "inside",
+                        show: true,
+                        textStyle: {
+                            fontSize: 12
+                        },
+                    }
+                },
+                lineStyle: {
+                    normal: {
+                        // width: 1,
+                        // shadowColor: 'none',
+                        color:'#0207CE'
+                    },
+                },
+                data: [
+                    {
+                        name: "省局",
+                        symbolSize: [70, 100],
+                        draggable: false,
+                        fixed: true,
+                        symbol: "rect",
+                        value: [0, 150, '我的情况'],
+                        itemStyle: {
+                            borderColor: '#3093AC',
+                            borderWidth: 1,
+                            // shadowBlur: 20,
+                            // shadowColor: '#04f2a7',
+                            color: '#040C42',
+                        },
+                        label: {
+                            fontSize: 16,
+                            fontWeight: 'bold'
+                        },
+                    },
+                    // 第二级
+                    {
+                        name: "南京市",
+                        symbolSize: [70, 100],
+                        draggable: false,
+                        fixed: true,
+                        symbol: "rect",
+                        value: [200,250],
+                        itemStyle: {
+                            borderColor: '#3093AC',
+                            borderWidth: 1,
+                            color: '#040C42',
+                        },
+                        label: {
+                            fontSize: 16,
+                            fontWeight: 'bold'
+                        },
+                    },
+                    {
+                        name: "苏州市",
+                        symbolSize: [70, 100],
+                        draggable: false,
+                        fixed: true,
+                        symbol: "rect",
+                        value: [200,200],
+                        itemStyle: {
+                            borderColor: '#3093AC',
+                            borderWidth: 1,
+                            color: '#040C42',
+                        },
+                        label: {
+                            fontSize: 16,
+                            fontWeight: 'bold'
+                        },
+                    },
+                    {
+                        name: "...",
+                        symbolSize: [70, 100],
+                        draggable: false,
+                        fixed: true,
+                        symbol: "rect",
+                        value: [200,150],
+                        itemStyle: {
+                            borderColor: '#3093AC',
+                            borderWidth: 1,
+                            color: '#040C42',
+                        },
+                        label: {
+                            fontSize: 16,
+                            fontWeight: 'bold'
+                        },
+                    },
+                    // 第三级
+                    {
+                        name: "鼓楼区",
+                        symbolSize: [100, 45],
+                        draggable: false,
+                        fixed: true,
+                        symbol: "rect",
+                        value: [300,280],
+                        itemStyle: {
+                            borderColor: '#3093AC',
+                            borderWidth: 1,
+                            color: '#040C42',
+                        },
+                        label: {
+                            fontSize: 16,
+                            fontWeight: 'bold'
+                        },
+                    },
+                    {
+                        name: "玄武区",
+                        symbolSize: [100, 45],
+                        draggable: false,
+                        fixed: true,
+                        symbol: "rect",
+                        value: [300,245],
+                        itemStyle: {
+                            borderColor: '#3093AC',
+                            borderWidth: 1,
+                            color: '#040C42',
+                        },
+                        label: {
+                            fontSize: 16,
+                            fontWeight: 'bold'
+                        },
+                    }
+                    ,
+                    {
+                        name: "... ",
+                        symbolSize: [100, 45],
+                        draggable: false,
+                        fixed: true,
+                        symbol: "rect",
+                        value: [300,210],
+                        itemStyle: {
+                            borderColor: '#3093AC',
+                            borderWidth: 1,
+                            color: '#040C42',
+                        },
+                        label: {
+                            fontSize: 16,
+                            fontWeight: 'bold'
+                        },
+                    }
+                ],
+                links: [
+                    {
+                        source: "南京市",
+                        value: " ",
+                        target: "省局",
+                    },{
+                        source: "苏州市",
+                        value: " ",
+                        target: "省局",
+                    },{
+                        source: "...",
+                        value: " ",
+                        target: "省局",
+                    },{
+                        source: "鼓楼区",
+                        value: " ",
+                        target: "南京市",
+                    },{
+                        source: "玄武区",
+                        value: " ",
+                        target: "南京市",
+                    },{
+                        source: "... ",
+                        value: " 3333333",
+                        target: "南京市",
+                    }],
+            }
+        ]
+    };
+    myChart.setOption(option);
+
+    myChart.on('click', function (param) {
+        console.log(param); //这里根据param填写你的跳转逻辑
+    });
+</script>
+</body>
+</html>

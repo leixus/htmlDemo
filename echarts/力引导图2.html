@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="echarts.js"></script>
+</head>
+<body>
+<div id="charts" style="width: 800px; height: 700px;"></div>
+<script>
+    var myChart = echarts.init(document.getElementById('charts'));
+    var option = {
+        tooltip: {
+            formatter: '{b}<br />{c}'
+        },
+        animationDurationUpdate: 1500,
+        animationEasingUpdate: 'quinticInOut',
+        color:['#83e0ff','#45f5ce','#b158ff'],
+        series: [
+            {
+                type: 'graph',
+                layout: 'force',
+                force:{
+                    repulsion:1000,
+                    edgeLength:50
+                },
+                roam: true,
+                label: {
+                    normal: {
+                        show: true
+                    }
+                },
+                data: [
+                    {
+                        name: '征管系统',
+                        symbolSize: 80,
+                        value: ['本年累计（亿条）:299.84', '截止目前累计（亿条）:846.89'],
+                        draggable: true,
+                        category: 0,
+                        itemStyle: {
+                            normal: {
+                                borderColor: '#04f2a7',
+                                borderWidth: 6,
+                                shadowBlur: 20,
+                                shadowColor: '#04f2a7',
+                                color: '#001c43',
+                            }
+                        },
+                        x:250,
+                        y:250,
+                    },
+                    {
+                        name: '金税三期核心征管',
+                        symbolSize:60,
+                        value: ['本年累计（亿条）:94.28', '截止目前累计（亿条）:320.92'],
+                        itemStyle: {
+                            normal: {
+                                borderColor: '#82dffe',
+                                borderWidth: 4,
+                                shadowBlur: 10,
+                                shadowColor: '#04f2a7',
+                                color: '#001c43'
+
+                            }
+                        },
+                        category: 0,
+                        x:300,
+                        y:90,
+                    },
+                    {
+                        name: '金税三期外部交换',
+                        symbolSize:60,
+                        value: ['本年累计（亿条）:0.73', '截止目前累计（亿条）:3.82'],
+                        itemStyle: {
+                            normal: {
+                                borderColor: '#82dffe',
+                                borderWidth: 4,
+                                shadowBlur: 10,
+                                shadowColor: '#04f2a7',
+                                color: '#001c43'
+
+                            }
+                        },
+                        category: 0,
+                        x:300,
+                        y:60,
+                    }
+                ],
+                links: [
+                    {
+                        source: '征管系统',
+                        target: '金税三期核心征管'
+
+                    },
+                    {
+                        source: '征管系统',
+                        target: '金税三期外部交换',
+                    },
+                    {
+                        source: '征管系统',
+                        target: '金税三期决策一包',
+                    },
+                    {
+                        source: '征管系统',
+                        target: '金税三期决策二包',
+                    },
+                    {
+                        source: '征管系统',
+                        target: '货运税控系统',
+                    },
+                    {
+                        source: '征管系统',
+                        target: '防伪税控系统',
+                    },
+                    {
+                        source: '征管系统',
+                        target: '协查系统',
+                    },
+                    {
+                        source: '征管系统',
+                        target: '稽核系统',
+                    },
+                    {
+                        source: '征管系统',
+                        target: '电子底账系统',
+                    },
+                    {
+                        source: '征管系统',
+                        target: '电子税局',
+                    },
+                    {
+                        source: '征管系统',
+                        target: '委托代征系统',
+                    },
+                    {
+                        source: '征管系统',
+                        target: 'CTAIS2.0',
+                    },
+                    {
+                        source: '征管系统',
+                        target: '普票网开',
+                    },
+                    {
+                        source: '征管系统',
+                        target: '大企业管理系统',
+                    },
+                    {
+                        source: '征管系统',
+                        target: '风险管理平台',
+                    },
+                    {
+                        source: '征管系统',
+                        target: '车购税系统',
+                    },
+                    {
+                        source: '征管系统',
+                        target: '大数据情报平台',
+                    },
+                    {
+                        source: '征管系统',
+                        target: '出口退税系统',
+                    },
+                    {
+                        source: '征管系统',
+                        target: '重点税源直报系统',
+                    },
+                    {
+                        source: '征管系统',
+                        target: '金税三期个税',
+                    },
+                    {
+                        source: '征管系统',
+                        target: '金税三期社保',
+                    },
+                    {
+                        source: '征管系统',
+                        target: '原地税大集中系统',
+                    },
+
+                ],
+                force:{
+                    initLayout: 'circular',//初始布局
+                    repulsion:400,//斥力大小
+                },
+                lineStyle: {
+                    normal: {
+                        opacity: 0.9,
+                        width: 5,
+                        curveness: 0
+                    }
+                },
+                categories:[
+                    {name: '0'},
+                    {name: '1'}
+                ]
+            }
+        ]
+    };
+    myChart.setOption(option);
+</script>
+</body>
+</html>

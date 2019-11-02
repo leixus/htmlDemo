@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="echarts.js"></script>
+</head>
+<body>
+    <div id="main" style="width: 65px; height: 65px;"></div>
+    <script>
+        var myChart = echarts.init(document.getElementById('main'));
+        var data = 200;//数值大小
+        var max = 360;//满刻度大小
+        var option = {
+            // title: {
+            //     text: '-AQI-',
+            //     top:'38%',
+            //     left:'center',
+            //     textStyle:{
+            //         color: '#fff',
+            //         fontSize: 18
+            //     }
+            // },
+            backgroundColor: 'orange',
+            "color": ["#fff", 'rgba(255,255,255,.2)'],
+            "series": [{
+                "type": "pie",
+                "center": ["50%", "50%"],
+                "radius": ["83%", "90%"],
+                "hoverAnimation": false,
+                "data": [{
+                    "name": "",
+                    "value": data,
+                    "label": {
+                        "show": true,
+                        "position": "center",
+                        "color": "#fff",
+                        "fontSize": 16,
+                        "fontWeight": "bold",
+                        "formatter": function(o){
+                            return data
+                        }
+                    }
+                },{//画剩余的刻度圆环
+                    "name": "",
+                    "value": max-data,
+                    "label": {
+                        show:false
+                    },
+                    "labelLine":{
+                        show:false
+                    }
+                }]
+            },
+                {
+                    "type": "pie",
+                    "center": ["50%", "50%"],
+                    "radius": ["65%", "89%"],
+                    "hoverAnimation": false,
+                    "data": [{
+                        "name": "",
+                        "value": data,
+                        "label": {
+                            show:false
+                        },
+                        "labelLine":{
+                            show:false
+                        },
+                        itemStyle:{
+                            color: 'rgba(0,0,0,0)'
+                        }
+                    },
+                        {//画中间的图标
+                            "name": "",
+                            "value": 0,
+                            "label": {
+                                position:'inside',
+                                backgroundColor: 'red',
+                                borderRadius: 3,
+                                padding: 3
+                            }
+                        },{
+                            "name": "",
+                            "value": max-data,
+                            "label": {
+                                show:false
+                            },
+                            "labelLine":{
+                                show:false
+                            }
+                            ,
+                            itemStyle:{
+                                color: 'rgba(0,0,0,0)'
+                            }
+                        }]
+                }]
+        }
+
+        myChart.setOption(option);
+    </script>
+</body>
+</html>

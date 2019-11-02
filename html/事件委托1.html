@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div">
+    <div class="div1">div1</div>
+    <div class="div2">div2</div>
+</div>
+</body>
+<script>
+    window.onload = function(){
+        let div = document.getElementById('div');
+
+        div.addEventListener('click',function(e){
+            console.log(e.target)
+        });
+
+        let div3 = document.createElement('div');
+        div3.setAttribute('class','div3');
+        div3.innerHTML = 'div3';
+        div.appendChild(div3)
+    }
+</script>
+</html>

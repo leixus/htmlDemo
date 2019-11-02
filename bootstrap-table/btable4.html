@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../plugins/bootstrap-3.3.7/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../plugins/bootstrap-table-master/dist/bootstrap-table.css">
+</head>
+<body>
+
+<table id="table"></table>
+
+
+<script src="../plugins/jquery-3.4.1.min.js"></script>
+<script src="../plugins/bootstrap-3.3.7/dist/js/bootstrap.js"></script>
+<script src="../plugins/bootstrap-table-master/dist/bootstrap-table.js"></script>
+<script src="../plugins/bootstrap-table-master/dist/locale/bootstrap-table-zh-CN.js"></script>
+<script>
+
+    var $table = $('#table');
+
+    $table.bootstrapTable({
+        method: 'post',
+        url: 'https://api.apiopen.top/getWangYiNews',
+        pagination: true, //设置分页
+        queryParams : queryParams,//请求服务器时所传的参数,
+        sidePagination: 'server',
+        search: true,
+        columns : [
+            {
+                title : '标题',
+                field : 'title'
+            },
+            {
+                title : '时间',
+                field : 'passtime'
+            },
+            {
+                title : '地址',
+                field : 'path',
+            }
+        ]
+    });
+
+    function queryParams(params) {
+        // alert('queryParams: ' + JSON.stringify(params));
+        var args = {
+            page: 1,
+            count: 10,
+        };
+        return args
+    }
+
+    function mounted() {
+        $('.toolbar input').change(function () {
+            var queryParamsType = $('.toolbar input:checked').next().text()
+
+            $table.bootstrapTable('refreshOptions', {
+                queryParamsType: queryParamsType
+            })
+        })
+    }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div id="charts" style="width: 1500px; height: 700px;"></div>
+<script src="../plugins/jquery-3.4.1.min.js"></script>
+<script src="echarts.js"></script>
+<script>
+    var myChart = echarts.init(document.getElementById('charts'));
+
+    var data = {
+        "name":"flare",
+        "children":[
+            {
+                "name":"analytics",
+                "children":[
+                    {
+                        "name":"cluster",
+                        "value": 2256,
+                        itemStyle: {
+                            normal: {
+                                label: {
+                                    show: true,
+                                },
+                                color: 'red',
+                                borderWidth: 2,
+                                borderColor: 'green'
+                            }
+                        }
+                    },
+                    {
+                        "name":"graph",
+                        "value": 2256
+                    },
+                    {
+                        "name":"optimization",
+                        "value":7074
+                    }
+                ]
+            },
+            {
+                "name":"animate",
+                "value":7074
+            },
+            {
+                "name":"data",
+                "value":1759
+            },
+            {
+                "name":"flex",
+                "children":[
+                    {
+                        "name":"FlareVis",
+                        "value":4116
+                    }
+                ]
+            }
+        ]
+    };
+
+    myChart.setOption(option = {
+        tooltip: {
+            trigger: 'item',
+            triggerOn: 'mousemove'
+        },
+        series: [
+            {
+                type: 'tree',
+                data: [data],
+                top: '1%',
+                left: '7%',
+                bottom: '1%',
+                right: '20%',
+                symbol: 'rect',
+                symbolSize: [80, 100],
+                itemStyle: {
+                    color: '#040C42',
+                    borderColor: '#04486F',
+                    lineStyle: {
+                        color: '#050F91',
+                        width: 1,
+                        type: 'solid', // 'curve'|'broken'|'solid'|'dotted'|'dashed'
+                    },
+                    emphasis: {
+                        label: {
+                            show: true
+                        }
+                    }
+                },
+                label: {
+                    show: true,
+                    position: 'inside',
+                    textStyle: {
+                        color: '#fff',
+                        fontSize: 15,
+                        // fontWeight:  'bolder',
+                    }
+                },
+                lineStyle: {
+                    color: '#050F91',
+                    width: 1,
+                    type: 'solid', // 'curve'|'broken'|'solid'|'dotted'|'dashed'
+                },
+                leaves: {
+                    label: {
+                        normal: {
+                            // position: 'right',
+                            // verticalAlign: 'middle',
+                            // align: 'left',
+                        },
+                    }
+                },
+                expandAndCollapse: true,
+                animationDuration: 550,
+                animationDurationUpdate: 750
+            }
+        ]
+    });
+</script>
+</body>
+</html>

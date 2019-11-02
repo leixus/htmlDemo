@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div id="charts" style="width: 700px; height: 500px;">
+
+</div>
+
+<script src="echarts.js"></script>
+<script src="echarts-wordcloud.min.js"></script>
+<script>
+
+    function createRandomItemStyle() {
+        return {
+            normal: {
+                color: 'rgb(' + [
+                    Math.round(Math.random() * 240),
+                    Math.round(Math.random() * 240),
+                    Math.round(Math.random() * 240)
+                ].join(',') + ')'
+            }
+        };
+    }
+
+    var myChart = echarts.init(document.getElementById('charts'));
+    var option = {
+        tooltip: {
+            show: true
+        },
+        series: [{
+            type: "wordCloud",
+            shape:'circle',
+            gridSize: 22,
+            sizeRange: [12, 55],
+            rotationRange: [0, 0],
+            textPadding: [20, 30],
+            width:800,
+            height:500,
+            textStyle: {
+                normal: {
+                    color: function() {
+                        return 'rgb(' + [
+                            Math.round(Math.random() * 160),
+                            Math.round(Math.random() * 160),
+                            Math.round(Math.random() * 160)
+                        ].join(',') + ')';
+                    }
+                },
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowColor: '#333'
+                }
+            },
+            data: [
+
+
+                {
+                    name: " 两百",
+                    value: 1
+                },
+                {
+                    name: " 盈利",
+                    value: 1
+                },
+                {
+                    name: " 机智",
+                    value: 1
+                },
+                {
+                    name: " 更新换代",
+                    value: 1
+                },
+                {
+                    name: " 太乱",
+                    value: 1
+                },
+                {
+                    name: " 赔付",
+                    value: 1
+                },
+                {
+                    name: " 自营",
+                    value: 1
+                },
+                {
+                    name: " 产品",
+                    value: 1
+                },
+                {
+                    name: " 手持",
+                    value: 1
+                },
+                {
+                    name: " 夜景",
+                    value: 1
+                },
+                {
+                    name: " 机子",
+                    value: 1
+                },
+                {
+                    name: " 拆过",
+                    value: 1
+                }
+            ],
+        }]
+
+    };
+    myChart.setOption(option);
+</script>
+</body>
+</html>

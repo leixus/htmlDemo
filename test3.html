@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="format-detection" content="telephone=no,email=no,adress=no"/>
+    <meta name="viewport"
+          content="width=device-width,  initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,  user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>simpleNavFollowing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            position: relative;
+            height: 100%;
+        }
+
+        #nav {
+            position: fixed;
+            top: 50%;
+            left: 20px;
+            margin-top: -140px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        #nav a{
+            display: block;
+            position: relative;
+            width: 98px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            background-color: #eee;
+            color: #333;
+            border-left: 2px solid transparent;
+        }
+        #nav a:hover{
+            width: 98px;
+            border-left: 2px solid #4b59ff;
+        }
+        #nav a p{
+            position: relative;
+            z-index: 3;
+        }
+        #nav a.active{
+            background-color: #4b59ff;
+            color: #fff;
+        }
+        #main {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #main div {
+            height: 300px;
+            background-color: #efefef;
+            border-top: 1px solid #ccc;
+        }
+
+        #main div:nth-child(2n) {
+            background-color: #fafafa;
+        }
+    </style>
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script>
+        $(function () {
+            var nav = $("#nav");
+            var mainPage = $(".mainPage");
+            var mainTopArr = new Array();
+
+            for(var i=0;i<mainPage.length;i++){
+                var top = mainPage.eq(i).offset().top;
+                mainTopArr.push(top);
+            }
+            $(window).scroll(function(){
+                var scrollTop = $(this).scrollTop();
+                var k;
+                for(var i=0;i<mainTopArr.length;i++){
+                    if(scrollTop>=mainTopArr[i]){
+                        k=i;
+                    }
+                }
+                nav.find("a").eq(k).addClass("active").siblings().removeClass("active");
+            });
+            nav.find("a[href^='#']").click(function(e){
+                e.preventDefault();
+                $('html, body').animate({scrollTop: $(this.hash).offset().top}, 400);
+            });
+        });
+
+    </script>
+</head>
+<body>
+<div id="nav">
+    <a href="#page1" class="active">page1</a>
+    <a href="#page2">page2</a>
+    <a href="#page3">page3</a>
+    <a href="#page4">page4</a>
+    <a href="#page5">page5</a>
+    <a href="#page6">page6</a>
+    <a href="#page7">page7</a>
+    <a href="#page8">page8</a>
+    <a href="#page9">page9</a>
+    <a href="#page10">page10</a>
+</div>
+<div id="main">
+    <div class="mainPage" id="page1">page1</div>
+    <div class="mainPage" id="page2" style="height: 400px;">page2</div>
+    <div class="mainPage" id="page3">page3</div>
+    <div class="mainPage" id="page4">page4</div>
+    <div class="mainPage" id="page5" style="height: 300px;">page5</div>
+    <div class="mainPage" id="page6">page6</div>
+    <div class="mainPage" id="page7">page7</div>
+    <div class="mainPage" id="page8">page8</div>
+    <div class="mainPage" id="page9" style="height: 900px;">page9</div>
+    <div class="mainPage" id="page10">page10</div>
+    <div class="mainPage" id="page11" style="height: 900px;">page11</div>
+</div>
+</body>
+</html>

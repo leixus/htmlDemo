@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="charts" style="width: 700px; height: 500px;">
+
+</div>
+<script src="echarts.js"></script>
+<script src="echarts-wordcloud.min.js"></script>
+<script>
+    var myChart = echarts.init(document.getElementById('charts'));
+    var data = {
+        value: [{
+            "name": "花鸟市场",
+            "value": 1446
+        },
+            {
+                "name": "汽车",
+                "value": 928
+            },
+            {
+                "name": "家教",
+                "value": 48
+            },
+            {
+                "name": "体育培训",
+                "value": 23
+            },
+            {
+                "name": "职场培训",
+                "value": 5
+            },
+            {
+                "name": "金融财经",
+                "value": 1328
+            },
+            {
+                "name": "银行",
+                "value": 765
+            },
+            {
+                "name": "股票",
+                "value": 452
+            },
+            {
+                "name": "保险",
+                "value": 415
+            },
+            {
+                "name": "贷款",
+                "value": 253
+            },
+            {
+                "name": "基金",
+                "value": 211
+            },
+            {
+                "name": "信用卡",
+                "value": 180
+            },
+            {
+                "name": "外汇",
+                "value": 138
+            },
+            {
+                "name": "P2P",
+                "value": 116
+            },
+            {
+                "name": "贵金属",
+                "value": 98
+            },
+            {
+                "name": "债券",
+                "value": 93
+            },
+            {
+                "name": "网络理财",
+                "value": 92
+            },
+            {
+                "name": "信托",
+                "value": 90
+            },
+            {
+                "name": "征信",
+                "value": 76
+            },
+            {
+                "name": "期货",
+                "value": 76
+            },
+            {
+                "name": "公积金",
+                "value": 40
+            },
+            {
+                "name": "银行理财",
+                "value": 36
+            },
+            {
+                "name": "银行业务",
+                "value": 30
+            },
+            {
+                "name": "典当",
+                "value": 7
+            },
+            {
+                "name": "海外置业",
+                "value": 1
+            },
+            {
+                "name": "汽车",
+                "value": 1309
+            },
+            {
+                "name": "汽车档次",
+                "value": 965
+            },
+            {
+                "name": "汽车品牌",
+                "value": 900
+            },
+            {
+                "name": "汽车车型",
+                "value": 727
+            },
+            {
+                "name": "购车阶段",
+                "value": 461
+            },
+            {
+                "name": "家具",
+                "value": 273
+            },
+            {
+                "name": "家居风格",
+                "value": 187
+            },
+            {
+                "name": "家居家装关注品牌",
+                "value": 140
+            },
+            {
+                "name": "家纺",
+                "value": 107
+            },
+            {
+                "name": "厨具",
+                "value": 47
+            },
+            {
+                "name": "灯具",
+                "value": 43
+            },
+            {
+                "name": "家居饰品",
+                "value": 29
+            },
+            {
+                "name": "家居日常用品",
+                "value": 10
+            },
+            {
+                "name": "生活服务",
+                "value": 883
+            },
+            {
+                "name": "物流配送",
+                "value": 536
+            },
+            {
+                "name": "家政服务",
+                "value": 108
+            },
+            {
+                "name": "摄影服务",
+                "value": 49
+            },
+            {
+                "name": "搬家服务",
+                "value": 38
+            }
+        ],
+        image:"data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNTM5NjcxMDg4MjI5IiBjbGFzcz0iaWNvbiIgc3R5bGU9IiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjE5Njc3IiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgd2lkdGg9IjUwMCIgaGVpZ2h0PSI1MDAiPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PC9zdHlsZT48L2RlZnM+PHBhdGggZD0iTTgwNi4xMjMgMTUzLjU3OWg2NS41MzZ2NzE4LjkxMkg2ODQuMjY3VjU1Mi45Nkw1MzEuNjcgNzEyLjcyNWgtMjAuNDU5TDM1OS42NTkgNTUyLjk2djMxOS41MzFIMTcyLjI0NlYxNTMuNTc5aDY3LjU4NGwyODAuNTk3IDMxMS4zMTcgMjg1LjY5Ni0zMTEuMzE3eiIgcC1pZD0iMTk2NzgiPjwvcGF0aD48L3N2Zz4="
+    }
+    //温馨提示：image 选取有严格要求不可过大；，否则firefox不兼容  iconfont上面的图标可以
+    let maskImage = new Image();
+    maskImage.src = data.image
+
+    maskImage.onload = function(){
+        myChart.setOption( {
+            backgroundColor:'#fff',
+            tooltip: {
+                show: false
+            },
+            series: [{
+                type: 'wordCloud',
+                gridSize: 1,
+                sizeRange: [1, 39],
+                rotationRange: [15, 20],
+                // maskImage: maskImage,
+                textPadding: [20, 30],
+                textStyle: {
+                    normal: {
+                        color: function(v) {
+                            let color = ['#27D38A', '#FFCA1C', '#5DD1FA', '#F88E25','#47A0FF','#FD6565']
+                            let num =Math.floor(Math.random() * (5 + 1));
+                            console.log(num)
+                            return color[num];
+                        },
+                    },
+                },
+                left: 'center',
+                top: 'center',
+                width: '96%',
+                height: '50%',
+                // right: null,
+                // bottom: null,
+                // width: 300,
+                // height: 200,
+                // top: 20,
+                data: data.value
+            }]
+        })
+    }
+    // myCharta.setOption(option);
+</script>
+</body>
+</html>
