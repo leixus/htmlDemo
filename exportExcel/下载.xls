@@ -1,0 +1,8 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+      xmlns:x="urn:schemas-microsoft-com:office:excel"
+      xmlns="http://www.w3.org/TR/REC-html40">
+      <head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>
+        <x:Name>Sheet1</x:Name>
+        <x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet>
+        </x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]-->
+        </head><body><table><tr><td>姓名</td><td>电话</td><td>邮箱</td></tr><tr><td>路人甲	</td><td>123456	</td><td>123@123456.com	</td></tr><tr><td>炮灰乙	</td><td>123456	</td><td>123@123456.com	</td></tr><tr><td>土匪丙	</td><td>123456	</td><td>123@123456.com	</td></tr><tr><td>流氓丁	</td><td>123456	</td><td>123@123456.com	</td></tr></table></body></html>

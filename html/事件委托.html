@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div1">111</div>
+</body>
+<script>
+    // window.onload = function(){
+    //     let div1 = document.getElementById('div1');
+    //     div1.onclick = function(){
+    //         console.log('打印第一次')
+    //     };
+    //     div1.onclick = function(){
+    //         console.log('打印第二次')
+    //     };
+    // }
+
+    // window.onload = function(){
+    //     let div1 = document.getElementById('div1');
+    //     div1.addEventListener('click',function(){
+    //         console.log('打印第一次')
+    //     });
+    //     div1.addEventListener('click',function(){
+    //         console.log('打印第二次')
+    //     });
+    // }
+
+    // window.onload = function(){
+    //     let body = document.querySelector('body');
+    //     let div1 = document.getElementById('div1');
+    //     body.addEventListener('click',function(){
+    //         console.log('打印body')
+    //     });
+    //     div1.addEventListener('click',function(){
+    //         console.log('打印div1')
+    //     });
+    // }
+
+    window.onload = function(){
+        let body = document.querySelector('body');
+        let div1 = document.getElementById('div1');
+        body.addEventListener('click',function(){
+            console.log('打印body')
+        },true);
+        div1.addEventListener('click',function(){
+            console.log('打印div1')
+        });
+    }
+</script>
+</html>

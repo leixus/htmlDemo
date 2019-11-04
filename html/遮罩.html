@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        html, body{
+            width: 100%;
+            height: 100%;
+        }
+        .showModel{
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: none;
+        }
+
+        .modelBox{
+            width: 600px;
+            height: 300px;
+            background-color: #ffffff;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <button id="isModel">遮罩层</button>
+</div>
+<div id="model" class="showModel">
+    <div id="content" class="modelBox">
+        11111
+    </div>
+</div>
+</body>
+<script src="jquery.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#isModel").click(function () {
+            $("#model").show()
+        });
+
+        $("#model").click(function () {
+            $("#model").hide()
+        });
+
+        $("#content").click(function (e) {
+            e.stopPropagation()
+        });
+    })
+</script>
+</html>

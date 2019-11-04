@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="../plugins/jquery-3.4.1.min.js"></script>
+<script>
+    // $.ajax({
+    //     type: "GET",
+    //     url: "https://www.jianshu.com/?seen_snote_ids%5B%5D=44640368&seen_snote_ids%5B%5D=41877264&seen_snote_ids%5B%5D=44619458&seen_snote_ids%5B%5D=42727731&seen_snote_ids%5B%5D=44915533&seen_snote_ids%5B%5D=41848913&seen_snote_ids%5B%5D=43073928&page=2",
+    //     dataType: "json",
+    //     success: function(data){
+    //         console.log(data);
+    //     }
+    // });
+
+
+    $.ajax({
+        type: "POST",
+        url: "https://api.apiopen.top/getWangYiNews",
+        data: {page: 1, count: 5},
+        dataType: "json",
+        success: function(data){
+            console.log(data);
+        }
+    });
+
+
+</script>
+</body>
+</html>

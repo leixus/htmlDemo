@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="border: 2px dashed red; padding: 20px 0px;">
+    <label>选择文件：</label>
+    <input type="file" id="xmTanFile" accept=".html,.js,.css,.txt,.cs,.xml" onchange="xmTanUploadFile(this)"/>
+    <input type="button" value="读取成二进制数据" onclick="readAsBinaryString()" />
+    <input type="button" value="读取成文本数据" onclick="readAsText()" />
+    <input type="button" value="隐藏读取内容" onclick="document.getElementById('xmTanContentDiv').style.display = 'none';"/>
+    <input type="button" value="显示读取内容" onclick="document.getElementById('xmTanContentDiv').style.display = 'block';"/>
+    <div id="xmTanContentDiv"></div>
+</div>
+
+<script type="text/javascript">
+    //判断浏览器是否支持FileReader接口
+    if (typeof FileReader == 'undefined') {
+        document.getElementById("xmTanContentDiv").InnerHTML = "<p>当前浏览器不支持FileReader接口！</p>";
+        document.getElementById("xmTanFile").setAttribute("disabled", "disabled");
+    }
+
+    //选择文件
+    function xmTanUploadFile(obj){
+        if (obj.files.length < 1) return;
+
+        var file = obj.files[0];
+
+        if (file.size > 1024 * 1024) {
+            alert("文件大于1M， 太大了，小点吧！");
+            obj.value = "";
+            return;
+        }
+    }
+
+    //读取文件为二进制
+    function readAsBinaryString() {
+        var obj = document.getElementById("xmTanFile");
+        if (obj.files.length < 1) return;
+
+        var file = obj.files[0];
+        var reader = new FileReader();
+
+        //将文件以二进制形式读入页面
+        reader.readAsBinaryString(file);
+        reader.onload = function (f) {
+            document.getElementById("xmTanContentDiv").innerHTML = this.result;
+        }
+    }
+
+    //读取文件为文本
+    function readAsText() {
+        var obj = document.getElementById("xmTanFile");
+        if (obj.files.length < 1) return;
+
+        var file = obj.files[0];
+        var reader = new FileReader();
+
+        //将文件以文本形式读入页面
+        reader.readAsText(file);
+        reader.onload = function (f) {
+            document.getElementById("xmTanContentDiv").innerHTML = this.result;
+        }
+    }
+</script>
+
+</body>
+</html>

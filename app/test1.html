@@ -1,0 +1,219 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link href="css/mui.css" rel="stylesheet" />
+    <!-- 小图标 iconfont CSS -->
+    <link href="./css/iconfont/iconfont.css" rel="stylesheet" />
+    <!-- 自定义 公共 CSS -->
+    <link href="./css/myPublic.css" rel="stylesheet" />
+    <link href="./css/registerNewFault.css" rel="stylesheet" />
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .mui-bar-nav {
+            -webkit-box-shadow: 0 0px 0 #ccc;
+            box-shadow: 0 0px 0 #ccc;
+        }
+
+        .mui-toast-container{
+            bottom: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="mui-bar mui-bar-nav headerBg">
+    <a class="mui-action-back mui-pull-left font14">
+        返回
+    </a>
+    <h1 class="mui-title font14 fw600">登记新故障</h1>
+</header>
+
+<div class="mui-content">
+    <ul class="mui-table-view">
+        <li class="mui-table-view-cell mui-media">
+            <a href="javascript:;">
+                <div class="mui-row troubleBg">
+                    <div id="" class="mui-col-xs-3">
+                        故障内容
+                    </div>
+                    <div class="mui-col-xs-9">
+                        <input id="troublesContent" type="text" class="mui-input-clear textareaStyle" placeholder="请输入故障内容..." style="height: 21px;" />
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <a href="javascript:;">
+                <div class="mui-row troubleBg">
+                    <div id="" class="mui-col-xs-3">
+                        状态
+                    </div>
+                    <div class="mui-col-xs-9">
+                        <div id="troublesStatus" class="trobleStatus">
+                            <button type="button" class="mui-btn">发现故障</button>
+                            <button type="button" class="mui-btn">联系维保</button>
+                            <button type="button" class="mui-btn">解决中</button>
+                            <button type="button" class="mui-btn">已上报</button>
+                            <button type="button" class="mui-btn">已解决</button>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <a href="javascript:;">
+                <div class="mui-row troubleBg">
+                    <div id="" class="mui-col-xs-3">
+                        处理方案
+                    </div>
+                    <div class="mui-col-xs-9">
+                        <textarea id="textarea" class="textareaStyle" rows="5" placeholder="请输入处理方案..."></textarea>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <a href="javascript:;">
+                <div class="mui-row troubleBg" id="taskImages">
+                    <!-- <div id="" class="mui-col-xs-4" style="text-align: center; margin: 0.625rem 0;">
+                        <img src="./img/troubleshooting/60x60.gif">
+                    </div>
+                    <div id="" class="mui-col-xs-4" style="text-align: center; margin: 0.625rem 0;">
+                        <img src="./img/troubleshooting/60x60.gif">
+                    </div>
+                    <div id="" class="mui-col-xs-4" style="text-align: center; margin: 0.625rem 0;">
+                        <img src="./img/troubleshooting/60x60.gif">
+                    </div> -->
+                </div>
+                <div class="mui-row troubleBg" style="margin-top: 1.25rem; margin-bottom: 4.375rem;">
+                    <div id="" class="mui-col-xs-12" style="text-align: center;">
+                        <img id="headCodeBtn" src="./img/troubleshooting/takePhoto.png">
+                    </div>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="nextStep">
+    <button id="troubleSubmit" type="button" class="mui-btn mui-btn-blue buttonSetColor">提交</button>
+</div>
+
+<script src="js/ipConfig.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/jlanxin-1.2.0.js"></script>
+<script src="js/mui.js"></script>
+<script type="text/javascript">
+    mui.init();
+    // 选择状态
+    $(document).ready(function() {
+
+        // 设备ID
+        var deviceId = GetQueryString("id");
+        // 状态
+        var troubleStauts = '';
+        $("#troublesStatus").on("tap", "button", function() {
+            $("#troublesStatus").find("button").css({
+                'border-color': '#ccc',
+                'color': '#333'
+            });
+            var status = ['发现故障', '联系维保', '解决中', '已上报', '已解决'];
+            for (var i = 0; i < status.length; i++) {
+                if ($(this).text() == status[i]) {
+                    $(this).css({
+                        'border-color': '#0000FF',
+                        'color': '#0000FF'
+                    })
+                    troubleStauts = $(this).text();
+                }
+            }
+        });
+
+        // 我要拍照
+        $("#takePhoto").on('click', function() {
+            // 调用拍照
+            lx.chooseImage({
+                count: 1, // 9
+                sizeType: ['original', 'compressed'], //
+                sourceType: ['album', 'camera'], //
+                success: function(res) {
+                    console.log(res);
+                    var localIds = res.localIds; // 图片ID
+                    alert(localIds);
+                    $("#taskImages").append('<div id="" class="mui-col-xs-4" style="text-align: center; margin: 0.625rem 0;">' +
+                        '                        <img src="'+ localIds +'" style="width: 60px; height: 60px;">' +
+                        '                    </div>')
+                }
+            });
+
+            // 上传图片接口
+            lx.uploadImage({
+                localId: '', // ID chooseImage
+                isShowProgressTips: 1, // 1
+                success: function(res) {
+                    var serverId = res.serverId; //
+                    ID
+                }
+            });
+        });
+
+        $("#troubleSubmit").on("click", function() {
+            // 故障内容
+            var troubleContent = $("#troublesContent").val();
+            // 处理方案
+            var remarks = $("#textarea").val();
+            if (!troubleContent) {
+                mui.toast('故障内容不能为空！', {
+                    duration: 1000,
+                    type: 'div'
+                });
+                return;
+            }
+
+            if (!troubleStauts) {
+                mui.toast('故障状态不能为空！', {
+                    duration: 1000,
+                    type: 'div'
+                });
+                return;
+            }
+            $.ajax({
+                type: 'POST',
+                url: ipConfig + 'api/v1/h5/seen/index',
+                data: {
+                    'path': 'addBroken',
+                    'content': JSON.stringify({
+                        'id': '',
+                        'deviceId': deviceId,
+                        'content': troubleContent,
+                        'status': troubleStauts,
+                        'remarks': remarks,
+                        'fileList': []
+                    })
+                },
+                success: function(res) {
+                    res = JSON.parse(res)
+                    if (res.code == 200) {
+                        mui.toast('登记成功！', {
+                            duration: 1000,
+                            type: 'div'
+                        });
+                        mui.back();
+                    }
+                }
+            })
+        })
+    })
+
+</script>
+</body>
+
+</html>

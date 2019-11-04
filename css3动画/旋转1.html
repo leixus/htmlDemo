@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				width: 408px;
+				height: 260px;
+				border: 1px solid #ccc;
+				background: linear-gradient(rgba(5,124,216,1), rgba(1,44,86,1));
+				background: -webkit-linear-gradient(rgba(5,124,216,1), rgba(1,44,86,1));
+				background: -moz-linear-gradient(rgba(5,124,216,1), rgba(1,44,86,1));
+				background: -ms-linear-gradient(rgba(5,124,216,1), rgba(1,44,86,1));
+				background: -moz-linear-gradient(rgba(5,124,216,1), rgba(1,44,86,1));
+				/* display: flex;
+				flex-direction: row;
+				flex-wrap: nowrap;
+				justify-content: center;
+				align-items: center; */
+				position: relative;
+			}
+			.img1{
+				/* width: 230px;
+				heihgt: 230px; */
+				vertical-align: middle;
+				display: block;
+				/* margin: 0 auto; */
+				margin: auto;
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+			}
+			.box img:nth-child(1){
+				width: 210px;
+				heihgt: 210px;
+				animation: rotate 20s linear infinite;
+			}
+			.box img:nth-child(2){
+				z-index: 3;
+				width: 230px;
+				heihgt: 230px;
+				/* transform: rotate(20deg); */
+				animation: rotate 3s linear infinite;	
+			}
+			@keyframes rotate{
+				from{
+					transform: rotate(0deg)
+					}
+			    to{
+					transform: rotate(359deg)
+					}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<img class="img1" src="./img1.png" >
+			<!-- <img class="img1" src="./img2.png" > -->
+			<img class="img1" src="./img4.png" >
+		</div>
+	</body>
+</html>

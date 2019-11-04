@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="echarts.js"></script>
+</head>
+<body>
+<div id="charts" style="width: 800px; height: 600px;"></div>
+<script>
+    var myChart = echarts.init(document.getElementById('charts'));
+    var option = {
+        tooltip: {
+            formatter: '{b}<br />{c}'
+        },
+        animationDurationUpdate: 1500,
+        animationEasingUpdate: 'quinticInOut',
+        color:['#83e0ff','#45f5ce','#b158ff'],
+        xAxis: {
+            show: true,
+            type: 'value'
+        },
+        yAxis: {
+            show: true,
+            type: 'value'
+        },
+        series: [
+            {
+                type: 'graph',
+                layout: 'none',
+                // force:{
+                //     // repulsion:1000,
+                //     // edgeLength:50
+                //     repulsion: 60,
+                //     edgeLength: 2
+                // },
+                coordinateSystem: 'cartesian2d',
+                edgeSymbol: ['arrow', 'none'],
+                roam: false,
+                label: {
+                    normal: {
+                        show: true
+                    }
+                },
+                data: [
+                    {
+                        name: '征管系统',
+                        symbolSize: 80,
+                        value: ['本年累计（亿条）:299.84', '截止目前累计（亿条）:846.89'],
+                        // draggable: true,
+                        // category: 0,
+                        x:250,
+                        y:200,
+                        // value: [100,150],
+                        fixed: true,
+                        // draggable: false,
+                        // itemStyle: {
+                        //     normal: {
+                        //         borderColor: '#04f2a7',
+                        //         borderWidth: 6,
+                        //         shadowBlur: 20,
+                        //         shadowColor: '#04f2a7',
+                        //         color: '#001c43',
+                        //     }
+                        // }
+                    },
+                    {
+                        name: '金税三期核心征管',
+                        symbolSize:80,
+                        draggable: false,
+                        // value: ['本年累计（亿条）:94.28', '截止目前累计（亿条）:320.92'],
+                        // itemStyle: {
+                        //     normal: {
+                        //         borderColor: '#82dffe',
+                        //         borderWidth: 4,
+                        //         shadowBlur: 10,
+                        //         shadowColor: '#04f2a7',
+                        //         color: '#001c43'
+                        //
+                        //     }
+                        // },
+                        // category: 1,
+                        value: [150,150],
+                        fixed: true,
+                        // x:300,
+                        // y:90,
+                    },
+                    // {
+                    //     name: '金税三期外部交换',
+                    //     symbolSize:60,
+                    //     value: ['本年累计（亿条）:0.73', '截止目前累计（亿条）:3.82'],
+                    //     itemStyle: {
+                    //         normal: {
+                    //             borderColor: '#82dffe',
+                    //             borderWidth: 4,
+                    //             shadowBlur: 10,
+                    //             shadowColor: '#04f2a7',
+                    //             color: '#001c43'
+                    //
+                    //         }
+                    //     },
+                    //     category: 1,
+                    //     x:400,
+                    //     y:60,
+                    // },
+                    // {
+                    //     name: '金税三期决策一包',
+                    //     symbolSize:60,
+                    //     value: ['本年累计（亿条）:1.34', '截止目前累计（亿条）:5.25'],
+                    //     itemStyle: {
+                    //         normal: {
+                    //             borderColor: '#82dffe',
+                    //             borderWidth: 4,
+                    //             shadowBlur: 10,
+                    //             shadowColor: '#04f2a7',
+                    //             color: '#001c43'
+                    //
+                    //         }
+                    //     },
+                    //     category: 1,
+                    //     x:500,
+                    //     y:70,
+                    // },
+                    // {
+                    //     name: '金税三期决策二包',
+                    //     symbolSize:60,
+                    //     value: ['本年累计（亿条）:7.38', '截止目前累计（亿条）:33.8'],
+                    //     itemStyle: {
+                    //         normal: {
+                    //             borderColor: '#82dffe',
+                    //             borderWidth: 4,
+                    //             shadowBlur: 10,
+                    //             shadowColor: '#04f2a7',
+                    //             color: '#001c43'
+                    //
+                    //         }
+                    //     },
+                    //     category: 1,
+                    //     x:600,
+                    //     y:70,
+                    // },
+                    // {
+                    //     name: '货运税控系统',
+                    //     symbolSize:60,
+                    //     value: ['本年累计（亿条）:7.38', '截止目前累计（亿条）:33.8'],
+                    //     itemStyle: {
+                    //         normal: {
+                    //             borderColor: '#82dffe',
+                    //             borderWidth: 4,
+                    //             shadowBlur: 10,
+                    //             shadowColor: '#04f2a7',
+                    //             color: '#001c43'
+                    //
+                    //         }
+                    //     },
+                    //     category: 1,
+                    //     x:700,
+                    //     y:90,
+                    // },
+                    // {
+                    //     name: '防伪税控系统',
+                    //     symbolSize:60,
+                    //     value: ['本年累计（亿条）:20.65', '截止目前累计（亿条）:90.72'],
+                    //     itemStyle: {
+                    //         normal: {
+                    //             borderColor: '#82dffe',
+                    //             borderWidth: 4,
+                    //             shadowBlur: 10,
+                    //             shadowColor: '#04f2a7',
+                    //             color: '#001c43'
+                    //
+                    //         }
+                    //     },
+                    //     category: 1,
+                    //     x:750,
+                    //     y:140,
+                    // },
+                    // {
+                    //     name: '协查系统',
+                    //     symbolSize:60,
+                    //     value: ['本年累计（亿条）:0.01', '截止目前累计（亿条）:0.09'],
+                    //     itemStyle: {
+                    //         normal: {
+                    //             borderColor: '#82dffe',
+                    //             borderWidth: 4,
+                    //             shadowBlur: 10,
+                    //             shadowColor: '#04f2a7',
+                    //             color: '#001c43'
+                    //
+                    //         }
+                    //     },
+                    //     category: 1,
+                    //     x:700,
+                    //     y:200,
+                    // },
+                    // {
+                    //     name: '稽核系统',
+                    //     symbolSize:60,
+                    //     value: ['本年累计（亿条）:17.46', '截止目前累计（亿条）:18.24'],
+                    //     itemStyle: {
+                    //         normal: {
+                    //             borderColor: '#82dffe',
+                    //             borderWidth: 4,
+                    //             shadowBlur: 10,
+                    //             shadowColor: '#04f2a7',
+                    //             color: '#001c43'
+                    //
+                    //         }
+                    //     },
+                    //     category: 1,
+                    //     x:600,
+                    //     y:240,
+                    // },
+                    // {
+                    //     name: '电子底账系统',
+                    //     symbolSize:60,
+                    //     value: ['本年累计（亿条）:20.46', '截止目前累计（亿条）:110.9'],
+                    //     itemStyle: {
+                    //         normal: {
+                    //             borderColor: '#82dffe',
+                    //             borderWidth: 4,
+                    //             shadowBlur: 10,
+                    //             shadowColor: '#04f2a7',
+                    //             color: '#001c43'
+                    //
+                    //         }
+                    //     },
+                    //     category: 1,
+                    //     x:500,
+                    //     y:290,
+                    // },
+                    // {
+                    //     name: '电子税局',
+                    //     symbolSize:60,
+                    //     value: ['本年累计（亿条）:0.27', '截止目前累计（亿条）:1.03'],
+                    //     itemStyle: {
+                    //         normal: {
+                    //             borderColor: '#82dffe',
+                    //             borderWidth: 4,
+                    //             shadowBlur: 10,
+                    //             shadowColor: '#04f2a7',
+                    //             color: '#001c43'
+                    //
+                    //         }
+                    //     },
+                    //     category: 1,
+                    //     x:400,
+                    //     y:320,
+                    // },
+                    // {
+                    //     name: '委托代征系统',
+                    //     symbolSize:60,
+                    //     value: ['本年累计（亿条）:-4.4', '截止目前累计（亿条）:3.08'],
+                    //     itemStyle: {
+                    //         normal: {
+                    //             borderColor: '#82dffe',
+                    //             borderWidth: 4,
+                    //             shadowBlur: 10,
+                    //             shadowColor: '#04f2a7',
+                    //             color: '#001c43'
+                    //
+                    //         }
+                    //     },
+                    //     category: 1,
+                    //     x:700,
+                    //     y:280,
+                    // },
+                    // {
+                    //     name: 'CTAIS2.0',
+                    //     symbolSize:60,
+                    //     value: ['本年累计（亿条）:0', '截止目前累计（亿条）:98.08'],
+                    //     itemStyle: {
+                    //         normal: {
+                    //             borderColor: '#82dffe',
+                    //             borderWidth: 4,
+                    //             shadowBlur: 10,
+                    //             shadowColor: '#04f2a7',
+                    //             color: '#001c43'
+                    //
+                    //         }
+                    //     },
+                    //     category: 1,
+                    //     x:600,
+                    //     y:310,
+                    // },
+                    // {
+                    //     name: '普票网开',
+                    //     symbolSize:60,
+                    //     value: ['本年累计（亿条）:0', '截止目前累计（亿条）:3.36'],
+                    //     itemStyle: {
+                    //         normal: {
+                    //             borderColor: '#82dffe',
+                    //             borderWidth: 4,
+                    //             shadowBlur: 10,
+                    //             shadowColor: '#04f2a7',
+                    //             color: '#001c43'
+                    //
+                    //         }
+                    //     },
+                    //     category: 1,
+                    //     x:460,
+                    //     y:340,
+                    // },
+                    // {
+                    //     name: '大企业管理系统',
+                    //     symbolSize:60,
+                    //     value: ['本年累计（亿条）:0', '截止目前累计（亿条）:0.29'],
+                    //     itemStyle: {
+                    //         normal: {
+                    //             borderColor: '#82dffe',
+                    //             borderWidth: 4,
+                    //             shadowBlur: 10,
+                    //             shadowColor: '#04f2a7',
+                    //             color: '#001c43'
+                    //
+                    //         }
+                    //     },
+                    //     category: 1,
+                    //     x:400,
+                    //     y:140,
+                    // },
+                    // {
+                    //     name: '风险管理平台',
+                    //     symbolSize:60,
+                    //     value: ['本年累计（亿条）:0.18', '截止目前累计（亿条）:3.81'],
+                    //     itemStyle: {
+                    //         normal: {
+                    //             borderColor: '#82dffe',
+                    //             borderWidth: 4,
+                    //             shadowBlur: 10,
+                    //             shadowColor: '#04f2a7',
+                    //             color: '#001c43'
+                    //
+                    //         }
+                    //     },
+                    //     category: 1,
+                    //     x:300,
+                    //     y:300,
+                    // },
+                    // {
+                    //     name: '车购税系统',
+                    //     symbolSize:60,
+                    //     value: ['本年累计（亿条）:0', '截止目前累计（亿条）:2.45'],
+                    //     itemStyle: {
+                    //         normal: {
+                    //             borderColor: '#82dffe',
+                    //             borderWidth: 4,
+                    //             shadowBlur: 10,
+                    //             shadowColor: '#04f2a7',
+                    //             color: '#001c43'
+                    //
+                    //         }
+                    //     },
+                    //     category: 1,
+                    //     x:500,
+                    //     y:140,
+                    // },
+                    // {
+                    //     name: '大数据情报平台',
+                    //     symbolSize:60,
+                    //     value: ['本年累计（亿条）:0', '截止目前累计（亿条）:0.02'],
+                    //     itemStyle: {
+                    //         normal: {
+                    //             borderColor: '#82dffe',
+                    //             borderWidth: 4,
+                    //             shadowBlur: 10,
+                    //             shadowColor: '#04f2a7',
+                    //             color: '#001c43'
+                    //
+                    //         }
+                    //     },
+                    //     category: 1,
+                    //     x:600,
+                    //     y:140,
+                    // },
+                    // {
+                    //     name: '出口退税系统',
+                    //     symbolSize:60,
+                    //     value: ['本年累计（亿条）:0.47', '截止目前累计（亿条）:7.25'],
+                    //     itemStyle: {
+                    //         normal: {
+                    //             borderColor: '#82dffe',
+                    //             borderWidth: 4,
+                    //             shadowBlur: 10,
+                    //             shadowColor: '#04f2a7',
+                    //             color: '#001c43'
+                    //
+                    //         }
+                    //     },
+                    //     category: 1,
+                    //     x:500,
+                    //     y:220,
+                    // },
+                    // {
+                    //     name: '重点税源直报系统',
+                    //     symbolSize:60,
+                    //     value: ['本年累计（亿条）:0', '截止目前累计（亿条）:0.09'],
+                    //     itemStyle: {
+                    //         normal: {
+                    //             borderColor: '#82dffe',
+                    //             borderWidth: 4,
+                    //             shadowBlur: 10,
+                    //             shadowColor: '#04f2a7',
+                    //             color: '#001c43'
+                    //
+                    //         }
+                    //     },
+                    //     category: 1,
+                    //     x:400,
+                    //     y:220,
+                    // },
+                    // {
+                    //     name: '金税三期个税',
+                    //     symbolSize:60,
+                    //     value: ['本年累计（亿条）:81.3', '截止目前累计（亿条）:81.3'],
+                    //     itemStyle: {
+                    //         normal: {
+                    //             borderColor: '#82dffe',
+                    //             borderWidth: 4,
+                    //             shadowBlur: 10,
+                    //             shadowColor: '#04f2a7',
+                    //             color: '#001c43'
+                    //
+                    //         }
+                    //     },
+                    //     category: 1,
+                    //     x:300,
+                    //     y:30,
+                    // },
+                    // {
+                    //     name: '金税三期社保',
+                    //     symbolSize:60,
+                    //     value: ['本年累计（亿条）:6.43', '截止目前累计（亿条）:6.43'],
+                    //     itemStyle: {
+                    //         normal: {
+                    //             borderColor: '#82dffe',
+                    //             borderWidth: 4,
+                    //             shadowBlur: 10,
+                    //             shadowColor: '#04f2a7',
+                    //             color: '#001c43'
+                    //
+                    //         }
+                    //     },
+                    //     category: 1,
+                    //     x:660,
+                    //     y:40,
+                    // },
+                    // {
+                    //     name: '原地税大集中系统',
+                    //     symbolSize:60,
+                    //     value: ['本年累计（亿条）:52.46', '截止目前累计（亿条）:52.46'],
+                    //     itemStyle: {
+                    //         normal: {
+                    //             borderColor: '#82dffe',
+                    //             borderWidth: 4,
+                    //             shadowBlur: 10,
+                    //             shadowColor: '#04f2a7',
+                    //             color: '#001c43'
+                    //
+                    //         }
+                    //     },
+                    //     category: 1,
+                    //     x:330,
+                    //     y:200,
+                    // },
+                ],
+                links: [
+                    {
+                        source: '征管系统',
+                        target: '金税三期核心征管',
+                        value: '开始',
+                    },
+                    // {
+                    //     source: '征管系统',
+                    //     target: '金税三期外部交换',
+                    // },
+                    // {
+                    //     source: '征管系统',
+                    //     target: '金税三期决策一包',
+                    // },
+                    // {
+                    //     source: '征管系统',
+                    //     target: '金税三期决策二包',
+                    // },
+                    // {
+                    //     source: '征管系统',
+                    //     target: '货运税控系统',
+                    // },
+                    // {
+                    //     source: '征管系统',
+                    //     target: '防伪税控系统',
+                    // },
+                    // {
+                    //     source: '征管系统',
+                    //     target: '协查系统',
+                    // },
+                    // {
+                    //     source: '征管系统',
+                    //     target: '稽核系统',
+                    // },
+                    // {
+                    //     source: '征管系统',
+                    //     target: '电子底账系统',
+                    // },
+                    // {
+                    //     source: '征管系统',
+                    //     target: '电子税局',
+                    // },
+                    // {
+                    //     source: '征管系统',
+                    //     target: '委托代征系统',
+                    // },
+                    // {
+                    //     source: '征管系统',
+                    //     target: 'CTAIS2.0',
+                    // },
+                    // {
+                    //     source: '征管系统',
+                    //     target: '普票网开',
+                    // },
+                    // {
+                    //     source: '征管系统',
+                    //     target: '大企业管理系统',
+                    // },
+                    // {
+                    //     source: '征管系统',
+                    //     target: '风险管理平台',
+                    // },
+                    // {
+                    //     source: '征管系统',
+                    //     target: '车购税系统',
+                    // },
+                    // {
+                    //     source: '征管系统',
+                    //     target: '大数据情报平台',
+                    // },
+                    // {
+                    //     source: '征管系统',
+                    //     target: '出口退税系统',
+                    // },
+                    // {
+                    //     source: '征管系统',
+                    //     target: '重点税源直报系统',
+                    // },
+                    // {
+                    //     source: '征管系统',
+                    //     target: '金税三期个税',
+                    // },
+                    // {
+                    //     source: '征管系统',
+                    //     target: '金税三期社保',
+                    // },
+                    // {
+                    //     source: '征管系统',
+                    //     target: '原地税大集中系统',
+                    // },
+                ],
+                // force:{
+                //     initLayout: 'circular',//初始布局
+                //     repulsion:400,//斥力大小
+                // },
+                // lineStyle: {
+                //     normal: {
+                //         opacity: 0.9,
+                //         width: 5,
+                //         curveness: 0
+                //     }
+                // },
+                // categories:[
+                //     {name: '0'},
+                //     {name: '1'}
+                // ]
+            }
+        ]
+    }
+    myChart.setOption(option);
+</script>
+</body>
+</html>

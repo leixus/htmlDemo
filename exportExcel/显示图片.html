@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>显示图片</title>
+</head>
+<body>
+<!--<input type="file" id="input">-->
+<!--<input type="file" id="input" onchange="handleFiles(this.files)">-->
+<input type="file" id="input" multiple onchange="handleFiles(this.files)">
+
+<div id="showImages">
+
+</div>
+
+<script>
+    // var selectedFile = document.getElementById('input').files;
+
+    var files = [];
+    var inputElement = document.getElementById("input");
+    inputElement.addEventListener("change", handleFiles, false);
+
+    function handleFiles(e) {
+        // console.log(e);
+        var fileList = this.files; /* now you can work with the file list */
+        // console.log(fileList);
+
+        var file = document.getElementById('input').files[0];
+
+        var ele1 = document.createElement("div");
+        var img1 = document.createElement("img");
+
+        var blob = new Blob([file], { type: "type: mime" });
+
+        img1.src = URL.createObjectURL(blob);
+
+        files.push(file)
+    }
+</script>
+</body>
+</html>

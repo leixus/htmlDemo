@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<a id="a-upon">
+    <input type="file" id="inputImage">
+</a>
+
+<img id="showImage" src="" alt="">
+
+<script src="jquery.min.js"></script>
+<script>
+    $("#inputImage").change(function () {
+        var objUrl = $(this)[0].files[0];
+        console.log(objUrl);
+        var windowURL = window.URL || window.webkitURL;
+        var dataURL = windowURL.createObjectURL(objUrl);
+        $("#showImage").attr("src", dataURL );
+
+        // var reader = new FileReader();//新建一个FileReader
+        // reader.readAsDataURL(objUrl);//读取文件,保存为base64 格式
+        // reader.onload = function (evt) { //读取完文件之后会回来这里
+        //     imageString = evt.target.result;
+        //     //获得一个http格式的url路径:mozilla(firefox)||webkit or chrome
+        //     var windowURL = window.URL || window.webkitURL;
+        //     //createObjectURL创建一个指向该参数对象(图片)的URL
+        //     var dataURL = windowURL.createObjectURL(objUrl);
+        //     $("#showImage").attr("src", dataURL );
+        // }
+    });
+</script>
+</body>
+</html>
