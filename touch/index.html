@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>Title</title>
+</head>
+<body>
+<div class="test" style="height: 900px; width: 100%; border: 1px solid #ccc;">
+    11111
+</div>
+
+<script>
+    let box = document.querySelector(".test");
+    box.addEventListener("touchstart", (e) => {
+        console.log("当手按下去了")
+    });
+
+    box.addEventListener("touchend", (e) => {
+        console.log("当手离开去了")
+    });
+
+    box.addEventListener("touchmove", (e) => {
+        console.log("手指拖动触发")
+    });
+</script>
+</body>
+</html>

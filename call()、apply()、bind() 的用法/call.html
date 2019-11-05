@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var name = '小王', age = 17;
+    var db = {
+        name: '小王',
+        age: 17
+    };
+    var obj = {
+        name: '小张',
+        objAge: this.age,
+        myFun: function () {
+            console.log(this)
+            console.log(this.name + '年龄' + this.age)
+        }
+    };
+    console.log(obj.objAge)
+
+    obj.myFun.call(db)
+    obj.myFun.apply(db)
+</script>
+</body>
+</html>
