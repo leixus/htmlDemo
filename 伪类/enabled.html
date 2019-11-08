@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input[type="text"]:enabled {
+            border: 1px solid #090;
+            background: #fff;
+            color: #000;
+        }
+        input[type="text"]:disabled {
+            border: 1px solid #ccc;
+            background: #eee;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+<form action="">
+    <fieldset>
+        <legend>E:enabled与E:disabled</legend>
+        <ul>
+            <li><input type="text" value="可用状态" /></li>
+            <li><input type="text" value="可用状态" /></li>
+            <li><input type="text" value="禁用状态" disabled="disabled" /></li>
+            <li><input type="text" value="禁用状态" disabled="disabled" /></li>
+        </ul>
+    </fieldset>
+</form>
+</body>
+</html>

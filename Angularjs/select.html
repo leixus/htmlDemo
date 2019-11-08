@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="angular.js"></script>
+</head>
+<body ng-app="app" ng-controller="ctrl">
+<div>
+    <select id="" ng-init="sel = data[0]" ng-model="sel" ng-options="x for x in data"></select>
+</div>
+<script>
+    angular.module('app', []).controller('ctrl', function ($scope) {
+        $scope.data = ['a','b','c']
+    })
+</script>
+</body>
+</html>
