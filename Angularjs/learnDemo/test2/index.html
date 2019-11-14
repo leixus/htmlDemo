@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div ng-controller="AppController as app">
+        <label>
+            <input type="text" ng-model="app.qty">
+        </label>
+
+        <label>
+            <select ng-model="app.inCurr">
+                <option ng-repeat="c in app.currencies" ng-value="{{c}}">{{c}}</option>
+            </select>
+        </label>
+
+        <button class="btn" ng-click="app.pay()">支付</button>
+    </div>
+</body>
+<script src="../angular.js"></script>
+<script src="invoice2.js"></script>
+<script src="finance2.js"></script>
+</html>
