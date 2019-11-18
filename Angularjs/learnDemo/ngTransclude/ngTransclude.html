@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="transcludeExample">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-controller="ExampleController">
+    <input ng-model="title"><br>
+    <textarea ng-model="text"></textarea> <br/>
+    <div pane data={{title}}><div>{{text}}</div></div>
+</div>
+</body>
+<script src="../angular.js"></script>
+<script>
+    angular.module('transcludeExample', [])
+        .directive('pane', function(){
+            return {
+                restrict: 'A',
+                transclude: true,
+                replace: true,
+                scope: {
+                    data:'@'
+                },
+                templateUrl: 'test5.html',
+                controller: function ($scope) {
+                    console.log($scope.data);
+                }
+            };
+        })
+        .controller('ExampleController', ['$scope', function($scope) {
+                $scope.title = 'Lorem Ipsum';
+                $scope.text = 'Neque porro quisquam est qui dolorem ipsum quia dolor...';
+            }]
+        );
+</script>
+
+</html>
