@@ -1,0 +1,30 @@
+<!doctype html>
+<html ng-app>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+
+<head>
+
+</head>
+
+<body>
+    <div ng-controller="EventController">
+        Root作用域<tt>MyEvent</tt> count:
+        <ul>
+            <li ng-repeat="i in [1]" ng-controller="EventController">
+                <button ng-click="$emit('MyEvent')">$emit('MyEvent')</button>
+                <button ng-click="$broadcast('MyEvent')">$broadcast('MyEvent')</button>
+                <br>
+                Middle作用域<tt>MyEvent</tt> count:
+                <ul>
+                    <li ng-repeat="item in [1, 2]" ng-controller="EventController">
+                        Leaf作用域<tt>MyEvent</tt> count:
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="../angular.js"></script>
+<script src="index.js"></script>
+
+</html>

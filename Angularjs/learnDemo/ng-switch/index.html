@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="switchExample">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div ng-controller="ExampleController">
+        <select ng-model="selection" ng-options="item for item in items">
+        </select>
+        <p>selection={{selection}}</p>
+        <hr />
+        <div class="animate-switch-container" ng-switch on="selection">
+            <div class="animate-switch" ng-switch-when="settings">Settings Div</div>
+            <div class="animate-switch" ng-switch-when="home">Home Span</div>
+            <div class="animate-switch" ng-switch-default>default</div>
+        </div>
+    </div>
+
+</body>
+<script src="../angular.js"></script>
+<script src="../angular-animate.min.js"></script>
+<script>
+    angular.module('switchExample', ['ngAnimate'])
+        .controller('ExampleController', ['$scope', function ($scope) {
+            $scope.items = ['settings', 'home', 'other'];
+            $scope.selection = $scope.items[0];
+        }]);
+
+</script>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../angular.js"></script>
+    <script src="test6.js"></script>
+</head>
+
+<body>
+    <div ng-init="friends = [{name:'John', phone:'555-1276'},
+        {name:'Mary', phone:'800-BIG-MARY'},
+        {name:'Mike', phone:'555-4321'},
+        {name:'Adam', phone:'555-5678'},
+        {name:'Julie', phone:'555-8765'},
+        {name:'Juliette', phone:'555-5678'}]"></div>
+
+    Search: <input ng-model="searchText">
+    <table id="searchTextResults">
+        <tr>
+            <th>名称</th>
+            <th>Phone</th>
+        </tr>
+        <tr ng-repeat="friend in friends | filter:searchText">
+            <td>{{friend.name}}</td>
+            <td>{{friend.phone}}</td>
+        </tr>
+    </table>
+    <hr>
+
+    Any: <input ng-model="search.$">{{search}} <br>
+    Name only <input ng-model="search.name"><br>
+    Phone only <input ng-model="search.phone"><br>
+    Equality <input Type="checkbox" ng-model="strict"><br>
+    <table id="searchObjResults">
+        <tr>
+            <th>名称</th>
+            <th>Phone</th>
+        </tr>
+        <tr ng-repeat="friendObj in friends | filter:search:strict">
+            <td>{{friendObj.name}}</td>
+            <td>{{friendObj.phone}}</td>
+        </tr>
+    </table>
+
+</body>
+
+</html>

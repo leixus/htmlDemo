@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MyReverseModule">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div ng-controller="Ctrl">
+        <input ng-model="greeting" type="text"><br>
+        未添加过滤器: {{greeting}}<br>
+        <!-- 逆置: {{greeting|reverse}}<br> -->
+        逆置 + 大写: {{greeting|reverse:true}}<br>
+    </div>
+</body>
+<script src="../angular.js"></script>
+<script src="script.js"></script>
+
+</html>
