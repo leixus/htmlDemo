@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        table tr th,td{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body ng-controller="myCtrl">
+<form action="" ng-submit="submit()">
+    <table>
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>选择</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>家</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="option in tableList track by $index" ng-init="outIndex = $index">
+                <td>
+                    {{outIndex + 1}}
+                </td>
+                <td>
+                    <select name="" id="" ng-model="option.select">
+                        <option ng-repeat="item in selectList track by $index" ng-selected="option.select == item" value="{{item}}">{{item}}</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" ng-model="option.name" />
+                </td>
+                <td>
+                    <input type="text" ng-model="option.age" />
+                </td>
+                <td>
+                    <input type="text" ng-model="option.home" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <input type="submit" value="提交">
+</form>
+</body>
+<script src="../angular.js"></script>
+<script>
+    angular.module("myApp", []).controller("myCtrl", function ($scope) {
+        $scope.selectList = ['虾', '皮', '神'];
+        $scope.tableList = [
+            {
+                select: '皮',
+                name: 'leixu',
+                age: '26',
+                home: 'none'
+            },
+            {
+                select: '神',
+                name: 'leixu2',
+                age: '226',
+                home: '2none'
+            },
+        ];
+        $scope.submit = function () {
+            alert('提交')
+        }
+    });
+</script>
+</html>

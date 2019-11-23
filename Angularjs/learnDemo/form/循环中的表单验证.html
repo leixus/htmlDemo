@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<select class="form-control form_items_sm form_items"
+        name="optionAmount"
+        ng-model="optionAmount"
+        ng-options="o for o in optionAmounts"
+        ng-change="updateArray(optionAmount)"
+        required>
+</select>
+
+<div ng-repeat="i in optionArray">
+    <h4 class="form_items_title">
+        选项{{i}}
+        <span class="error"
+              ng-show="problemForm['optionContent[{{i}}]'].$invalid && problemForm.submitted">
+            此为必填项
+        </span>
+    </h4>
+    <input class="form-control form_items_md form_items"
+           name="optionContent[{{i}}]"
+           ng-model="optionContent[i]"
+           required>
+</div>
+
+</body>
+</html>
