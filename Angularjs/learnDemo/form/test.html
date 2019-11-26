@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="numberExample">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body ng-controller="ExampleController">
+
+    <form name="myForm">
+        <select 
+        class="form-control form_items_sm form_items" 
+        name="optionAmount" 
+        ng-model="optionAmount"
+            ng-options="o for o in optionAmounts" ng-change="updateArray(optionAmount)" required></select>
+        <div ng-repeat="i in optionArray">
+            <h4 class="form_items_title">
+                选项{{i}}
+                <span class="error"
+                    ng-show="problemForm['optionContent[{{i}}]'].$invalid && problemForm.submitted">此为必填项</span></h4>
+            <input class="form-control form_items_md form_items" name="optionContent[{{i}}]" ng-model="optionContent[i]"
+                required>
+        </div>
+
+    </form>
+
+</body>
+<script src="../angular.js"></script>
+<script>
+    angular.module('numberExample', [])
+        .controller('ExampleController', ['$scope', function ($scope) {
+            $scope.value = 12;
+        }]);
+</script>
+
+</html>

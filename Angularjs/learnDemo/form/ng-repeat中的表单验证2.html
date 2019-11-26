@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body ng-controller="myCtrl">
+
+    <form class="form-demo" ng-submit="submit()" ng-class="{ 'ng-submitted': submitted }" name="contactForm" novalidate>
+        <div ng-repeat="contact in contacts">
+            <strong>Contact {{ $index }}</strong>
+            <button type="button" ng-click="removeContact($index)">Remove</button>
+
+            <div>
+                <label>
+                    First Name
+                    <input type="text" name="firstName" ng-model="contact.firstName" required ng-maxlength="20" />
+                    <span class="validation-message" ng-show="contactForm.firstName.$error.required">
+                        Required
+                    </span>
+                    <span class="validation-message" ng-show="contactForm.firstName.$error.maxlength">
+                        Max length 20
+                    </span>
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    Last Name
+                    <input type="text" name="lastName" ng-model="contact.lastName" required ng-maxlength="20" />
+                    <span class="validation-message" ng-show="contactForm.lastName.$error.required">
+                        Required
+                    </span>
+                    <span class="validation-message" ng-show="contactForm.lastName.$error.maxlength">
+                        Max length 20
+                    </span>
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    <input type="checkbox" name="receiveEmails" ng-model="contact.receiveEmails" />
+                    I want to receive emails
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    Email
+                    <input type="email" name="email" ng-model="contact.email" ng-required="contact.receiveEmails" />
+                    <span class="validation-message" ng-show="contactForm.email.$error.email">
+                        Invalid email
+                    </span>
+                    <span class="validation-message" ng-show="contactForm.email.$error.required">
+                        Required
+                    </span>
+                </label>
+            </div>
+
+            <br />
+        </div>
+
+        <div>
+            <button type="button" ng-click="addContact()">Add contact</button>
+            <button type="submit" ng-disabled="submitting" ng-switch="submitting">
+                <span ng-switch-default>Submit</span>
+                <span ng-switch-when="true">Submitting...</span>
+            </button>
+        </div>
+    </form>
+
+    <script src="../angular.js"></script>
+    <script>
+        var module = angular.module('myApp', []);
+
+        function ContactController($scope, $window, Contact) {
+            function success() {
+                $window.alert('Contacts saved successfully!');
+            }
+
+            function failure() {
+                $window.alert('Oops!');
+            }
+
+            $scope.contacts = [];
+            $scope.submitted = false;
+            $scope.submitting = false;
+
+            $scope.addContact = function () {
+                $scope.contacts.push({});
+            };
+
+            $scope.removeContact = function (index) {
+                $scope.contacts.splice(index, 1);
+            };
+
+            $scope.submit = function () {
+                $scope.submitted = true;
+
+                if ($scope.contactForm.$valid) {
+                    $scope.submitting = true;
+                    Contact.save($scope.contacts)
+                        .then(success, failure)
+                        .then(function () {
+                            $scope.submitting = false;
+                        });
+                } else {
+                    $window.alert('Please fix any validation errors and try again.');
+                }
+            };
+        }
+
+        module.controller('myCtrl', ['$scope', '$window', 'Contact', ContactController]);
+
+    </script>
+</body>
+
+</html>
