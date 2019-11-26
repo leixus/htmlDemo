@@ -1,0 +1,83 @@
+<!doctype html>
+<html ng-app="firstApp">
+
+<head>
+    <meta charset="utf-8" />
+    <style>
+        div {
+            border: 1px solid #ff7300;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div ng-controller="ParentController">
+        <!--父级-->
+        <div ng-click="clkP()">click--给child</div>
+
+        <div ng-controller="OneSelfController">
+            <!--自己-->
+            <span ng-click="clkme()">click me</span>
+            <div ng-controller="ChildController">
+                它是OneSelfController的子级
+            </div>
+            <!--子级-->
+        </div>
+
+        <div ng-controller="siblingsController">
+            它与OneSelfController是平级
+        </div>
+        <!--平级-->
+    </div>
+
+</body>
+
+<script src="../angular.js"></script>
+<script>
+    var app = angular.module('firstApp', []); //app模块名
+
+    app
+        .controller("ParentController", function ($scope) {
+
+            $scope.$on('sendParent', function (event, data) { //监听在子控制器中定义的 sendParent 事件
+                console.log('OneSelfController传过来的', data, event.name, event); //事件名称：sendParent
+            });
+
+            $scope.clkP = function () {
+                $scope.$broadcast('sendAllChild', '让siblingsController接收到');
+            }
+        })
+        .controller("siblingsController", function ($scope) {
+
+            $scope.$on('sendAllChild', function (event, data) {
+                console.log('值过来吧', data);
+            });
+
+            // 下面事件不会触发
+            $scope.$on('sendParent', function (event, data) {
+                console.log('平级得不到值', data);
+            });
+
+            $scope.$on('sendChild', function (event, data) {
+                console.log('平级得不到值', data);
+            });
+        })
+        .controller('OneSelfController', function ($scope) {
+            $scope.clkme = function () {
+                $scope.$broadcast('sendChild', '我给子控制器传递数据');
+                $scope.$emit('sendParent', '冒泡到父元素')
+            }
+        })
+        .controller('ChildController', function ($scope) {
+            $scope.$on('sendChild', function (event, data) {//监听在子控制器中定义的 sendChild 事件
+                console.log('ChildCtrl', data, event.name, event);// 事件名称：sendChild
+            });
+        })
+
+</script>
+
+</html>
