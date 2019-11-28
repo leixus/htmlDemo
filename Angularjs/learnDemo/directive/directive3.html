@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
 </head>
 <body>
     <custom-directive></custom-directive>
 </body>
 <script src="../angular.js"></script>
 <script>
-    var app = angular.module('myApp',[]);
+    var app = angular.module('myApp', []);
 
     app.directive('customDirective', customDirective);
 
@@ -18,23 +17,24 @@
         var directive = {
             restrict: 'EA',
             template: '<child-directive><child-directive>',
-            controller: function($scope, $element, $log) {
-                $log.log($element);
-                $element.find('span').text('hello cnblogs!');
+            link: function (scope, el) {
+                console.log(2)
+                el.find('span').text('hello cnblogs!');
             }
         };
         return directive;
     }
 
-    app.directive("childDirective",childDirective);
+    app.directive("childDirective", childDirective);
 
     function childDirective() {
         var directive = {
             restrict: 'EA',
             template: '<h1>hello xpy0928</h1>',
-            replace: true,
-            link: function($scope, $element, attr) {
+            // replace: true,
+            link: function (scope, $element, attr) {
                 console.log($element.text());
+                console.log(1)
                 $element.replaceWith(angular.element('<span>' + $element.text() + '</span>'));
             }
         };
