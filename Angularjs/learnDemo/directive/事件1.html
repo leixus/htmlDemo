@@ -5,17 +5,17 @@
     <title>指令的事件传递1</title>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="description" content="指令的事件传递2">
-     <meta name="revised" content="David, 2019/8/8/">
+    <meta name="revised" content="David, 2019/8/8/">
     <!-- <meta http-equiv="refresh" content="5"> -->
 </head>
 
 <body ng-controller="myCtrl">
     <div>
-        <div hello name="name">
+        <hello name="name" my-child-click="parentClick">
             <div>
                 我是一只小小小小鸟
             </div>
-        </div>
+        </hello>
     </div>
 </body>
 <script src="../jquery-3.4.1.js"></script>
@@ -26,6 +26,11 @@
 <script>
     var app = angular.module("myApp", ['myApp.hello']).controller("myCtrl", function ($scope) {
         $scope.name = "leixu"
+
+        $scope.parentClick = function (data) {
+            console.log(("我在外层点击了！"));
+            console.log(data);
+        }
     })
 </script>
 

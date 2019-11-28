@@ -1,10 +1,10 @@
 angular.module('app', [])
         .directive('dragGable', function ($document) {
             return function (scope, element, attr) {
-                console.log($document);
+                // console.log($document);
                 console.log(scope);
-                console.log(element);
-                console.log(attr);
+                // console.log(element);
+                // console.log(attr);
 
                 let startX = 0,
                     startY = 0,
