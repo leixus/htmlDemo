@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="download" type="button" value="下载">
+</body>
+<script src="../jquery-3.4.1.js"></script>
+<script>
+
+
+    $("#download").click(function () {
+        var data = {
+            tocked: 'xhdsajkladsnskja',
+            id: 14246323564313564
+        }
+        exportFile(data)
+    })
+
+    function exportFile(json) {
+        // 创建Form
+        var form = $('<form></form>');
+        // 设置属性
+        form.attr('action', 'http://localhost/api/export');
+        // 设置表单提交方式
+        form.attr('method', 'post');
+        // _self -> 当前页面 _blank -> 新页面
+        form.attr('target', '_blank');
+        // 将json数据生成dom节点
+        for (key in json) {
+            // 创建Input
+            var my_input = $('<input type="hidden"/>');
+            my_input.attr('name', key);
+            my_input.attr('value', json[key]);
+            // 附加到Form
+            form.append(my_input);
+        }
+        // 将form表单放到
+        $('body').append(form);
+        // 提交表单
+        form.submit();
+        // 把body中的form表单移除
+        $('body > form').remove();
+    }
+
+</script>
+
+</html>

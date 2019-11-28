@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <title>指令的事件传递1</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="description" content="指令的事件传递2">
+     <meta name="revised" content="David, 2019/8/8/">
+    <!-- <meta http-equiv="refresh" content="5"> -->
+</head>
+
+<body ng-controller="myCtrl">
+    <div>
+        <div hello name="name">
+            <div>
+                我是一只小小小小鸟
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../jquery-3.4.1.js"></script>
+<script src="../angular.js"></script>
+<script src="../angular-route.js"></script>
+<script src="./directive1.js"></script>
+<script src="../layer-v3.1.1/layer/layer.js"></script>
+<script>
+    var app = angular.module("myApp", ['myApp.hello']).controller("myCtrl", function ($scope) {
+        $scope.name = "leixu"
+    })
+</script>
+
+</html>
