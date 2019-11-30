@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>指令中的作用域</title>
+</head>
+<body>
+<div ng-app="myApp" ng-init="someProperty = 'some data'">
+    <div ng-init="siblingProperty='moredata'; aThirdProperty='123456'">
+        Inside Div Two: {{ aThirdProperty }}
+        <div ng-init="aThirdProperty = 'data for 3rd property'"
+             ng-controller="SomeController">
+            Inside Div Three: {{ aThirdProperty }}
+            <div ng-controller="SecondController">
+                Inside Div Four: {{ aThirdProperty }}
+                <br>
+                Outside myDirective: {{ myProperty }}
+                <div my-directive ng-init="myProperty = 'wow, this is cool'">
+                    Inside myDirective: {{ myProperty }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../angular.js"></script>
+<script>
+    angular.module('myApp', [])
+        .controller('SomeController', function ($scope) {
+            // 可以留空，但需要被定义
+        })
+        .controller('SecondController', function ($scope) {
+            // 同样可以留空
+        })
+        .directive('myDirective', function () {
+            return {
+                restrict: 'A',
+                scope: true
+            };
+        });
+</script>
+</html>

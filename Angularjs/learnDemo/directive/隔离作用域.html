@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>隔离作用域</title>
+</head>
+<body>
+<div ng-controller='MainController'>
+    Outside myDirective: {{ myProperty }}
+    <div my-directive ng-init="myProperty = 'wow, this is cool'">
+        Inside 外层 myDirective: {{ myProperty }}
+    </div>
+</div>
+</body>
+<script src="../angular.js"></script>
+<script>
+    angular.module('myApp', [])
+        .controller('MainController', function($scope) {
+
+        })
+        .directive('myDirective', function() {
+            return {
+                restrict: 'A',
+                scope: {},
+                transclude: true,
+                priority: 100,
+                template: '<div>Inside myDirective： {{ myProperty }} <div ng-transclude></div></div>'
+            };
+        });
+</script>
+</html>
