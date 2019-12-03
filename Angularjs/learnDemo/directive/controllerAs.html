@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        p {
+            background-color: #0d6dcd !important;
+            border: 1px solid #15758c;
+        }
+    </style>
+</head>
+<body>
+<!--    <div ng-controller="MainCtrl">-->
+<!--        {{title}}-->
+<!--    </div>-->
+
+<div ng-controller="MainCtrl as main">
+    { { main.title } }
+</div>
+
+</body>
+<script src="../angular.js"></script>
+<script>
+    var app = angular.module("myApp", []);
+    // app.controller('MainCtrl', function($scope) {
+    //     $scope.title = 'Some title';
+    // });
+
+    // 在AngularJS 1.2版本之后，我们可以这样写：
+    app.controller('MainCtrl', function () {
+        // this.title = 'Some title';
+    });
+
+    var MainCtrl = function () {
+        this.title = 'Some title';
+    };
+    var main = new MainCtrl();
+</script>
+</html>

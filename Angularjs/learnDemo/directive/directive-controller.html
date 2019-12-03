@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-controller="myCtrl">
+    <div>
+        <div link></div>
+        <div>ppppp</div>
+    </div>
+</body>
+<script src="../angular.js"></script>
+<script>
+    var app = angular.module("myApp", []).controller("myCtrl", function($scope) {
+
+    })
+    .directive('link', function () {
+        return {
+            restrict: 'EA',
+            transclude: true,
+            // template: '<div>222222</div>',
+            controller: function ($scope, $element, $transclude, $log) {
+                $transclude(function (clone) {
+                    $log.log(clone);
+                    $log.log($element);
+                    var a = angular.element("<a>");
+                    a.attr("href", clone.text())
+                    a.text(clone.text());
+                    $log.info("Created new a tag in link directive");
+                    $element[0].append(a)
+                })
+            }
+        }
+    })
+</script>
+</html>
