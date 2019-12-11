@@ -1,0 +1,78 @@
+<html>
+   
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="../../../bootstrap-3.3.7/dist/css/bootstrap.css">
+       
+</head>
+   
+<body ng-app="myapp">
+    <div class="container" ng-controller="MyController">     
+        <parent>             
+            <son></son>            
+            <daughter></daughter>         
+        </parent>       
+    </div>
+</body>
+<script src="../jquery-3.4.1.js"></script>
+<script src="../angular.js"></script>
+<script src="../../../bootstrap-3.3.7/dist/js/bootstrap.js"></script>
+<script type="text/javascript">
+    var myapp = angular.module("myapp", []);
+    myapp.controller("MyController", ['$scope', function ($scope) {
+        $scope.name = "mario";
+        $scope.age = "13";
+        $scope.send = function () {
+            console.log('.............');
+        };
+    }]);
+    myapp.directive("parent", function () {
+        return {
+            restrict: 'E',
+            scope: {},
+            controller: function () {
+                // this.data = ['1', '2', '3', '4', '5'];
+                data = ['1', '2', '3', '4', '5'];
+                this.click = function () {
+                    data.pop();
+                    console.log(data);
+                };
+            },
+            link: function (scope, elem, attrs) {
+                scope.name = '123';
+            },
+            template: '<span>{{name}}<div ng-transclude></div></span>',
+            replace: true,
+            transclude: true
+        };
+    });
+    myapp.directive("son", function () {
+        return {
+            restrict: 'E',
+            repalce: true,
+            require: '^?parent',
+            template: '<div ng-click="sonClick()">sonClick</div>',
+            link: function (scope, elem, atts, ctrl) {
+                scope.sonClick = ctrl.click;
+                // tmp = ctrl.data;
+                // console.log(tmp);
+                // ctrl.data.pop();
+            }
+        };
+    });
+    myapp.directive("daughter", function () {
+        return {
+            restrict: 'E',
+            repalce: true,
+            require: '^?parent',
+            template: '<div ng-click="daughterClick()">daughterClick</div>',
+            link: function (scope, elem, atts, ctrl) {
+                scope.daughterClick = ctrl.click;
+                // tmp = ctrl.data;
+                // console.log(tmp);
+            }
+        };
+    });
+</script>
+</html>
