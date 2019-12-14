@@ -31,10 +31,11 @@
         return {
             restrict: 'E',
             scope: {},
-            controller: function () {
+            controller: function ($scope, $log) {
                 // this.data = ['1', '2', '3', '4', '5'];
                 data = ['1', '2', '3', '4', '5'];
-                this.click = function () {
+                $log.log(this)
+                this.clickDa = function () {
                     data.pop();
                     console.log(data);
                 };
@@ -54,7 +55,7 @@
             require: '^?parent',
             template: '<div ng-click="sonClick()">sonClick</div>',
             link: function (scope, elem, atts, ctrl) {
-                scope.sonClick = ctrl.click;
+                scope.sonClick = ctrl.clickDa;
                 // tmp = ctrl.data;
                 // console.log(tmp);
                 // ctrl.data.pop();
