@@ -1,9 +1,21 @@
-<p>This is the partial for view 1.</p>
-
-<p>{{testView1}}</p>
-
 <div>
-    <p ng-init="qy1=1; qy2=2"></p>
-    <input type="text" ng-model="qy1">
-    <input type="text" ng-model="qy2">
+    <p>This is the partial for view 1.</p>
+
+    <p>{{testView1}}</p>
+
+    <div>
+        <p ng-init="qy1=1; qy2=2"></p>
+        <input type="text" ng-model="qy1">
+        <input type="text" ng-model="qy2">
+    </div>
+
+    <div ng-show="dataJson.length > 0" ng-repeat="item in dataJson">
+    <span>
+        {{item.passtime}}
+    </span>
+        <span>
+        {{item.title}}
+    </span>
+    </div>
+
 </div>

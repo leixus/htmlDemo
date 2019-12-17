@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        [ng-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body ng-cloak ng-controller="myCtrl">
+<div ng-show="dataJsonp.length > 0" ng-repeat="item in dataJsonp">
+        <span>{{item}}</span>
+        <span ng-show="item.title.length > 0">
+            {{item.title}}
+        </span>
+        <span ng-show="item.passtime.length > 0">
+            {{item.passtime}}
+        </span>
+</div>
+</body>
+<script src="../jquery-3.4.1.js"></script>
+<script src="../../angular.js"></script>
+<script>
+    var app = angular.module("myApp", [])
+        .controller("myCtrl", function ($scope, $http, $cacheFactory, $log) {
+            $scope.dataJsonp = [];
+
+            var lru = $cacheFactory('lru', {
+                capacity: 20
+            });
+
+            $http.get('https://api.apiopen.top/getAllUrl', {cache: lru})
+                .success(function (res) {
+                    console.log(res);
+                    $scope.dataJsonp = res
+                })
+                .error(function (error) {
+                    console.log(error);
+                })
+
+
+            // $http({
+            //     method: 'POST',
+            //     url: 'https://api.apiopen.top/getWangYiNews',
+            //     data: {
+            //         page: 1,
+            //         count: 10
+            //     }
+            // }).then(function successCallback(res) {
+            //     console.log(res);
+            //     $scope.dataJsonp = res.data.result
+            // }, function errorCallback(response) {
+            //     // 请求失败执行代码
+            // });
+
+            // $http.get('https://api.apiopen.top/getAllUrl', {cache: true})
+            //     .success(function (res) {
+            //         console.log(res);
+            //         $scope.dataJsonp = res
+            //     })
+            //     .error(function (error) {
+            //         console.log(error);
+            //     })
+        });
+
+</script>
+</html>

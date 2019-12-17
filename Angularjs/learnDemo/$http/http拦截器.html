@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        [ng-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body ng-cloak ng-controller="myCtrl">
+<div ng-show="dataJsonp.length > 0" ng-repeat="item in dataJsonp">
+    <span>{{item}}</span>
+    <span ng-show="item.title.length > 0">
+            {{item.title}}
+        </span>
+    <span ng-show="item.passtime.length > 0">
+            {{item.passtime}}
+        </span>
+</div>
+</body>
+<script src="../jquery-3.4.1.js"></script>
+<script src="../../angular.js"></script>
+<script>
+    var app = angular.module("myApp", []);
+    app.config(function ($httpProvider) {
+        // $httpProvider.defaults.headers.common['X-Requested-By'] = 'xxxxxxxxxxxx';
+        $httpProvider.interceptors.push('myInterceptor');
+    });
+    app.controller("myCtrl", function ($scope, $http, $cacheFactory, $log) {
+            $scope.dataJsonp = [];
+            $http.get('https://api.apiopen.top/getAllUrl')
+                .success(function (res) {
+                    console.log(res);
+                    $scope.dataJsonp = res
+                })
+                .error(function (error) {
+                    console.log(error);
+                })
+        });
+    app.factory('myInterceptor', function ($q) {
+        var interceptor = {
+            'request': function (config) {
+                console.log(config);
+                return config;
+            },
+            'response': function (response) {
+                console.log(response);
+                return response;
+            },
+            'requestError': function (rejection) {
+                return rejection;
+            },
+            'responseError': function (rejection) {
+                return rejection;
+            }
+        };
+        return interceptor;
+    })
+
+</script>
+</html>

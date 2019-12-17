@@ -1,8 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="89ae9b20-a7ab-4dd2-a437-73ba13d94523" name="Default Changelist" comment="指令详解">
+    <list default="true" id="89ae9b20-a7ab-4dd2-a437-73ba13d94523" name="Default Changelist" comment="http详解">
+      <change afterPath="$PROJECT_DIR$/Angularjs/learnDemo/$http/$http拦截器2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/learnDemo/$http/http1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/learnDemo/$http/http2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/learnDemo/$http/http3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/learnDemo/$http/http拦截器.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/learnDemo/$http/tets.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular-loader/LICENSE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular-loader/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular-loader/angular-loader.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular-loader/angular-loader.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular-loader/angular-loader.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular-loader/bower.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular-loader/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular-mocks/LICENSE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular-mocks/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular-mocks/angular-mocks.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular-mocks/bower.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular-mocks/ngAnimateMock.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular-mocks/ngMock.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular-mocks/ngMockE2E.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular-mocks/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular-route/LICENSE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular-route/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular-route/angular-route.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular-route/angular-route.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular-route/angular-route.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular-route/bower.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular-route/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular-route/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular/LICENSE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular/angular-csp.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular/angular.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular/angular.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular/angular.min.js.gzip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular/angular.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular/bower.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/angular/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/html5-boilerplate/dist/404.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/html5-boilerplate/dist/LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/html5-boilerplate/dist/apple-touch-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/html5-boilerplate/dist/browserconfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/html5-boilerplate/dist/css/main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/html5-boilerplate/dist/css/normalize.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/html5-boilerplate/dist/doc/TOC.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/html5-boilerplate/dist/doc/css.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/html5-boilerplate/dist/doc/extend.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/html5-boilerplate/dist/doc/faq.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/html5-boilerplate/dist/doc/html.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/html5-boilerplate/dist/doc/js.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/html5-boilerplate/dist/doc/misc.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/html5-boilerplate/dist/doc/usage.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/html5-boilerplate/dist/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/html5-boilerplate/dist/humans.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/html5-boilerplate/dist/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/html5-boilerplate/dist/js/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/html5-boilerplate/dist/js/plugins.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/html5-boilerplate/dist/js/vendor/jquery-3.1.0.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/html5-boilerplate/dist/robots.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/html5-boilerplate/dist/tile-wide.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Angularjs/lib/html5-boilerplate/dist/tile.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Angularjs/learn-angularjs/app/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Angularjs/learn-angularjs/app/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Angularjs/learn-angularjs/app/view1/view1.html" beforeDir="false" afterPath="$PROJECT_DIR$/Angularjs/learn-angularjs/app/view1/view1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Angularjs/learn-angularjs/app/view1/view1.js" beforeDir="false" afterPath="$PROJECT_DIR$/Angularjs/learn-angularjs/app/view1/view1.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +140,13 @@
       <workItem from="1575509149049" duration="5631000" />
       <workItem from="1575534692048" duration="1397000" />
       <workItem from="1576030248813" duration="2004000" />
+      <workItem from="1576294603519" duration="2885000" />
+      <workItem from="1576465250571" duration="5506000" />
+      <workItem from="1576480995997" duration="207000" />
+      <workItem from="1576482135091" duration="3601000" />
+      <workItem from="1576486079030" duration="1453000" />
+      <workItem from="1576549862438" duration="662000" />
+      <workItem from="1576550769922" duration="11345000" />
     </task>
     <task id="LOCAL-00001" summary="指令详解">
       <created>1575370069670</created>
@@ -82,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575370069670</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="指令详解">
+      <created>1576294656311</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1576294656311</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -103,13 +183,22 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="指令详解" />
-    <option name="LAST_COMMIT_MESSAGE" value="指令详解" />
+    <MESSAGE value="http详解" />
+    <option name="LAST_COMMIT_MESSAGE" value="http详解" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1576052916047">
+    <state x="391" y="159" width="1397" height="847" key="CommitChangelistDialog2" timestamp="1576585948861">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1576052916047" />
+    <state x="391" y="159" width="1397" height="847" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1576585948861" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1576550163085">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1576550163085" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1576294658629">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1576294658629" />
     <state x="752" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1576294632626">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

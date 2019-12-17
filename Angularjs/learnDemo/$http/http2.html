@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        [ng-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body ng-cloak ng-controller="myCtrl">
+<!--    <div id="lagouData"></div>-->
+<div ng-show="dataJsonp.length > 0" ng-repeat="item in dataJsonp">
+        <span>
+            {{item[0]}}
+        </span>
+    <span>
+            {{item[1]}}
+        </span>
+</div>
+</body>
+<script src="../jquery-3.4.1.js"></script>
+<script src="../../angular.js"></script>
+<script>
+    var app = angular.module("myApp", [])
+        .controller("myCtrl", function ($scope, $http, $log) {
+            $scope.dataJsonp = [];
+
+            $scope.JSON_CALLBACK = function(data) {
+                $scope.dataJsonp = data
+            };
+
+            $http({
+                method: 'JSONP',
+                url: 'http://suggest.taobao.com/sug?code=utf-8&q=卫衣&callback=JSON_CALLBACK',
+            }).then(function successCallback(response) {
+                console.log(response);
+                $scope.JSON_CALLBACK(response.data.result);
+            }, function errorCallback(response) {
+                // 请求失败执行代码
+            });
+        });
+
+</script>
+</html>
