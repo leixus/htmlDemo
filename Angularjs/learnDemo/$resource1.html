@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-controller="myCtrl">
+
+</body>
+<script src="jquery-3.4.1.js"></script>
+<script src="angular.js"></script>
+<script src="angular-resource.js"></script>
+<script>
+    var app = angular.module("myApp", ['ngResource'])
+
+    var user = $resource('https://api.apiopen.top/getWangYiNews', {
+        page: 1,
+        count: 10
+    })
+</script>
+</html>
