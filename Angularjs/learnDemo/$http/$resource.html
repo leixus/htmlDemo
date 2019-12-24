@@ -1,10 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>$resource</title>
 </head>
-<body>
+<body ng-controller="myCtrl">
+<div>
+    <div>
 
+    </div>
+</div>
+<script src="../jquery-3.4.1.js"></script>
+<script src="../angular.js"></script>
+<script src="../angular-resource.js"></script>
+<script>
+    var app = angular.module("myApp", ['ngResource']).controller("myCtrl", function ($scope, $resource, $http) {
+        // $http({
+        //     method: "POST",
+        //     url: "https://api.apiopen.top/getSingleJoke",
+        //     params: {
+        //         sid: 28654780
+        //     }
+        // }).then(function (res) {
+        //     console.log(res);
+        // })
+
+        // var User = $resource('/user/:userId', {userId:'@id'});
+        // var user = User.get({userId:123}, Function() {
+        //     user.abc = true;
+        //     user.$save();
+        // });
+
+        var User = $resource('https://api.apiopen.top/getSingleJoke/', {});
+        var user = User.save({sid: 28654780}, {}, function(res) {
+            console.log(res);
+        }, function (error) {
+            console.log(error);
+        });
+    })
+
+</script>
 </body>
 </html>

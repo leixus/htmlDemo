@@ -30,7 +30,11 @@
     });
     app.controller("myCtrl", function ($scope, $http, $cacheFactory, $log) {
             $scope.dataJsonp = [];
-            $http.get('https://api.apiopen.top/getAllUrl')
+            $http.post('https://api.apiopen.top/loginUser', {
+                apikey: 'd0058f79caae5300dcba65f128e52855',
+                name: 'peakchao',
+                passwd: '123456'
+            })
                 .success(function (res) {
                     console.log(res);
                     $scope.dataJsonp = res

@@ -1,0 +1,18 @@
+[
+    {
+        "msg": "This is the first msg",
+        "state": 1
+    },
+    {
+        "msg": "This is the second msg",
+        "state": 2
+    },
+    {
+        "msg": "This is the third msg",
+        "state": 1
+    },
+    {
+        "msg": "This is the fourth msg",
+        "state": 3
+    }
+]

@@ -22,7 +22,7 @@ angular.module('myApp.view1', ['ngRoute'])
                 count: 10
             }
         }).then(function successCallback(response) {
-            $log.log(response);
+            console.log(response);
             $scope.dataJson = response.data.result;
         }, function errorCallback(response) {
             // 请求失败执行代码

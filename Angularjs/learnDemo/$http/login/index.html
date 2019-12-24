@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>登录验证</title>
+    <style>
+        [ng-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body ng-cloak ng-controller="myCtrl">
+    <div>
+
+    </div>
+</body>
+<script src="../../angular.js"></script>
+<script src="../../angular-route.js"></script>
+<script src="../../angular-cookies.js"></script>
+<script src="ACCESS_LEVELS.js"></script>
+<script src="service.js"></script>
+<script>
+    var app = angular.module("myApp", ['ngRoute', 'myApp.ACCESS_LEVELS', 'ngCookies', 'myApp.services'])
+        .config(function ($httpProvider) {
+            var interceptor = function ($q, $rootScope, Auth) {
+                console.log(Auth);
+                Auth.setUser();
+                return {
+                    'response': function (resp) {
+                        console.log(resp);
+                        return resp
+                    },
+                    'responseError': function (rejection) {
+                        console.log(rejection);
+                        return rejection
+                    }
+                }
+            };
+            $httpProvider.interceptors.push(interceptor)
+        })
+        .controller("myCtrl", function ($scope, $http, $log) {
+            $log.log(1)
+        })
+</script>
+</html>

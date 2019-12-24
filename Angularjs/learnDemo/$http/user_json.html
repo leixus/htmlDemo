@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-controller="myCtrl">
+<div>
+
+</div>
+<script src="../jquery-3.4.1.js"></script>
+<script src="../angular.js"></script>
+<script>
+    // angular.module('myApp', [])
+    //     .config(function($httpProvider) {
+    //         $httpProvider.defaults.useXDomain = true;
+    //         delete $httpProvider.defaults.headers
+    //             .common['X-Requested-With'];
+    //     });
+    // https://suggest.taobao.com/sug?code=utf-8&q=卫衣&callback=cb
+    angular.module('myApp', [])
+        // .config(function($httpProvider) {
+        //     $httpProvider.defaults.useXDomain = true;
+        //     delete $httpProvider.defaults.headers
+        //         .common['X-Requested-With'];
+        // })
+        .controller("myCtrl", function ($scope, $http) {
+            // $http.get("https://suggest.taobao.com/sug?code=utf-8&q=卫衣&callback=JSON_CALLBACK") .success(function(data) {
+            //     // 数据
+            //     console.log(data);
+            // });
+
+            $http.get("./messages.json")
+                .success(function(data) {
+                    // 数据
+                    console.log(data);
+                });
+        });
+
+</script>
+</body>
+</html>
