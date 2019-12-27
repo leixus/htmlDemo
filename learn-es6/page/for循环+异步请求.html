@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>for循环+异步请求</title>
+</head>
+<body>
+
+</body>
+<script src="jquery-3.4.1.js"></script>
+<script>
+    const arrData = [
+        {
+            page: 1,
+            count: 2
+        },
+        {
+            page: 2,
+            count: 2
+        },
+        {
+            page: 3,
+            count: 2
+        },
+        {
+            page: 4,
+            count: 2
+        },
+    ];
+
+    function getInfo(item, index) {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                type: "POST",
+                url: "https://api.apiopen.top/getWangYiNews",
+                data: item,
+                dataType: "json",
+                success: function(res) {
+                    resolve(res);
+                },
+                error: function (error) {
+                    reject(error);
+                }
+            })
+        })
+    }
+
+    let promise = arrData.map((item, index) => {
+        // console.log(item, index);
+        return getInfo(item, index)
+    });
+
+    Promise.all(promise).then((allData) => {
+        console.log(allData);
+    })
+</script>
+</html>

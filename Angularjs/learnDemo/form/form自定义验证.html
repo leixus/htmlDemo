@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        [ng-cloak]{
+            display: none;
+        }
+    </style>
+    <link rel="stylesheet" href="../../../bootstrap-3.3.7/dist/css/bootstrap.css">
+</head>
+<body ng-cloak ng-controller="myCtrl" style="margin: 20px;">
+<form name="register_form" ng-submit="save()">
+    <div class="form-group">
+        <label for="username">
+            用户名(必须大于五位):
+        </label>
+        <input type="text"
+               name="username"
+               class="form-control"
+               ng-model="user.username"
+               ng-maxlength="10"
+               ng-minlength="3"
+               id="username"
+               autocomplete="off"
+               required
+               username>
+        <span style="color: red;" ng-show="!register_form.$valid">
+            不合法
+        </span>
+    </div>
+    <button class="btn btn-block btn-primary" type="submit">提交</button>
+</form>
+<h3>用户对象</h3>
+<pre>
+    {{ user | json }}
+</pre>
+
+</body>
+<script src="../jquery-3.4.1.js"></script>
+<script src="../angular.js"></script>
+<script src="../../../bootstrap-3.3.7/dist/js/bootstrap.js"></script>
+<script>
+    angular.module('myApp', []).controller("myCtrl", function ($scope) {
+        $scope.user = {
+            phoneNumber: '',
+            username: ''
+        };
+
+        $scope.save = function () {
+            console.log($scope.register_form.username.$valid);
+        }
+    })
+    .directive('username', function ($q, $http) {
+        return {
+            require: '?ngModel',
+            link: function (scope, ele, attrs, ngModel) {
+                console.log(ngModel);
+                if (!ngModel) return;
+                ngModel.$parsers.unshift(function (viewValue) {
+                    console.log(viewValue);
+                    var i= parseInt(viewValue);
+                    if (i >= 0 && i < 1000000) {
+                        ngModel.$setValidity("username", true);
+                        return viewValue;
+                    } else {
+                        ngModel.$setValidity("username", false);
+                        return undefined
+                    }
+                })
+            }
+        }
+    })
+</script>
+</html>

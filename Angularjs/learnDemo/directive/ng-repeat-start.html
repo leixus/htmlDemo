@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>循环ng-repeat-start</title>
     <style>
+        [ng-cloak]{
+            display: none;
+        }
         -animate-container {
             background: white;
             border: 1px solid black;
@@ -53,7 +56,7 @@
         }
     </style>
 </head>
-<body ng-controller="myCtrl">
+<body ng-cloak ng-controller="myCtrl">
 <div>
     <!--    I have {{friends.length}} friends. They are:-->
     <!--    <input Type="search" ng-model="q" placeholder="filter friends..."/>-->
@@ -68,7 +71,8 @@
         <ul class="uk-list uk-list-striped">
             <li ng-repeat="user in friends">
 <!--                <span ng-class="{setRed: $first, setGreen: $middle}">{{user.name}} + {{$first}}</span>-->
-                <span ng-class="{setGray: $even, setYellow: $odd, setRed: $first, setGreen: $middle, setBlue: $last}">{{user.name}} + {{$first}}</span>
+<!--                <span ng-class="{setGray: $even, setYellow: $odd, setRed: $first, setGreen: $middle, setBlue: $last}">{{user.name}} + {{$first}}</span>-->
+                <span ng-class="{setRed: $first, setGreen: $middle, setBlue: $last}">{{user.name}} + {{$first}}</span>
             </li>
             <!--            <li ng-repeat-end>-->
             <!--                {{user.age}}-->
@@ -85,21 +89,12 @@
 <script>
     var app = angular.module("myApp", []).controller("myCtrl", function ($scope, $log) {
         $scope.friends = [
-            {name: 'John', age: 25, gender: 'boy'},
-            {name: 'John', age: 25, gender: 'boy'},
-            {name: 'John', age: 25, gender: 'boy'},
-            {name: 'John', age: 25, gender: 'boy'},
-            {name: 'John', age: 27, gender: 'boy'},
-            {name: 'John', age: 28, gender: 'boy'},
-            {name: 'Jessie', age: 30, gender: 'girl'},
-            {name: 'Johanna', age: 28, gender: 'girl'},
-            {name: 'Joy', age: 15, gender: 'girl'},
-            {name: 'Mary', age: 28, gender: 'girl'},
-            {name: 'Peter', age: 95, gender: 'boy'},
-            {name: 'Sebastian', age: 50, gender: 'boy'},
-            {name: 'Erika', age: 27, gender: 'girl'},
-            {name: 'Patrick', age: 40, gender: 'boy'},
-            {name: 'Samantha', age: 60, gender: 'girl'}
+            {name: 'John1', age: 251, gender: 'boy1'},
+            {name: 'John2', age: 252, gender: 'boy2'},
+            {name: 'John3', age: 253, gender: 'boy3'},
+            {name: 'John4', age: 254, gender: 'boy4'},
+            {name: 'John5', age: 275, gender: 'boy5'},
+            {name: 'John6', age: 286, gender: 'boy6'},
         ]
     })
 </script>
