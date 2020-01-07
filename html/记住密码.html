@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>用户名密码</title>
+    <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
+    <script>
+        function SavePassword()
+        {
+            if(document.getElementById("savePassword").checked)
+            {
+                var username = $("#username").val();
+                var password = $("#password").val();
+                window.sessionStorage.username =  username;
+                window.sessionStorage.password = password;
+                localStorage.rmbPassword = true;
+            }
+            else
+            {
+                localStorage.rmbPassword = false;
+            }
+        }
+    </script>
+</head>
+<body>
+<label for="username" style="margin:auto;font-size:15px">用户名：</label>
+<input style="margin:auto;font-size:15px" type="text" name="username" id="username"  placeholder="输入用户名..." >
+<br><br>
+<label for="password" style="margin:auto;font-size:15px">密&nbsp&nbsp&nbsp码：</label>
+<input style="margin:auto;font-size:15px" type="password" name="password" id="password" placeholder="输入密码...">
+<input type="checkbox" name="savePassword" id="savePassword" checked="checked" onclick="SavePassword()">
+</body>
+</html>
